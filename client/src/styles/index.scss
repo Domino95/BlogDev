@@ -3,6 +3,7 @@
 @import "../components/Header/headerStyle";
 @import "../containers/Home/homeStyle";
 @import "../components/Footer/footerStyle";
+@import "../containers/Topics//topicsStyle";
 
 * {
     margin: 0;
@@ -13,4 +14,12 @@ body {
 }
 p {
     color: rgb(69, 69, 69);
+}
+a {
+    text-decoration: none;
+    color: black;
+    margin: 30px;
+}
+.active {
+    color: $orange-color;
 }

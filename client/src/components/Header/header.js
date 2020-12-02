@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Img from '../../img/3236267.jpg'
 const Logo = "BlogDev </>"
 
@@ -49,8 +50,8 @@ const Header = () => {
                         {hamburgerActive &&
                             <div className="nav__list__mobile">
                                 <img src={Img} alt="man" />
-                                <h2>Home</h2>
-                                <h2>Topics</h2>
+                                <h2>   <NavLink exact to="/"> Home</NavLink></h2>
+                                <h2> <NavLink to="/topics">Topics</NavLink></h2>
                                 <div className="nav__logInButtons">
                                     <button>Sign in</button>
                                     <button> Log in</button>
@@ -62,8 +63,8 @@ const Header = () => {
                     <>
                         <div className="nav__list">
                             <p>{Logo}</p>
-                            <p>Home</p>
-                            <p>Topics</p>
+                            <h2>   <NavLink exact to="/"> Home</NavLink></h2>
+                            <h2> <NavLink to="/topics">Topics</NavLink></h2>
                         </div>
                         <div className="nav__logInButtons">
                             <button>Sign in</button>
