@@ -1,0 +1,21 @@
+$blue-color: #6584c7;
+$orange-color: #f07c47;
+
+@mixin centerFlex($flex-direction: row, $justify-content: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: center;
+  flex-direction: $flex-direction;
+}
+@mixin button() {
+  height: 35px;
+  width: 90px;
+  color: white;
+  background-color: $blue-color;
+  border: none;
+  border-radius: 20px;
+  margin: 0 10px;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}

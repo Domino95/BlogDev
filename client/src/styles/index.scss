@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500&display=swap");
+@import "./variables";
+@import "../components/Header/headerStyle";
+@import "../containers/Home/homeStyle";
+@import "../components/Footer/footerStyle";
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Exo", sans-serif;
+}
+p {
+    color: rgb(69, 69, 69);
+}

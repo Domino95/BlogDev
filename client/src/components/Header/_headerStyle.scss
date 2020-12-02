@@ -1,0 +1,188 @@
+nav {
+    width: 100vw;
+    height: 120px;
+    padding: 45px 8vw 0 8vw;
+    background-color: white;
+    @include centerFlex;
+    align-items: flex-start;
+    position: fixed;
+    z-index: 99;
+    transition: 0.7s ease;
+    p {
+        font-size: 1rem;
+        color: black;
+        font-weight: 500;
+        margin: 0 5px;
+        letter-spacing: 1px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .nav__list {
+        width: calc(100% - (25px));
+        @include centerFlex(row, flex-start);
+        z-index: 10;
+        p {
+            &:nth-child(1) {
+                cursor: default;
+                font-size: 1.5rem;
+                color: #3659a2;
+            }
+        }
+        &__mobile {
+            height: 85%;
+            width: 100%;
+            position: absolute;
+            @include centerFlex(column, center);
+            img {
+                width: auto;
+                position: absolute;
+                animation: showNaviListImage 1s 0.5s both;
+            }
+            h2 {
+                margin: 20px;
+                text-align: center;
+                animation: showNaviListElements 1s 0.5s both;
+                cursor: pointer;
+                &:hover {
+                    color: $orange-color;
+                }
+            }
+        }
+    }
+    &.--active {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+        height: 50px;
+        padding-top: 10px;
+    }
+    &.--open {
+        height: 100%;
+        width: 100vw;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+        @include centerFlex(row, center);
+        align-items: flex-start;
+    }
+}
+.nav__list__mobile__footer {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: $blue-color;
+}
+.nav__logInButtons {
+    width: 100%;
+    @include centerFlex(column, center);
+    button {
+        @include button;
+        width: 150px;
+        margin: 20px;
+        animation: showNaviListElements 0.5s 0.5s both;
+        &:nth-child(1) {
+            background-color: white;
+            color: $blue-color;
+            border: 1px solid $blue-color;
+        }
+    }
+}
+
+.nav__hamburger {
+    width: 25px;
+    height: 30px;
+    @include centerFlex(row, flex-end);
+    cursor: pointer;
+    outline: none;
+    z-index: 100;
+    -webkit-tap-highlight-color: transparent;
+}
+.hamburgerMenu {
+    width: 25px;
+    height: 2px;
+    background-color: black;
+    position: relative;
+    transition: cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s;
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+        width: 25px;
+        height: 2px;
+        background-color: black;
+        transform: translateY(7px);
+        transition: cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s;
+    }
+    &::after {
+        transform: translateY(-7px);
+    }
+    &.open {
+        transform: translate(-7px);
+        background: transparent;
+        transition: cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s;
+        &::before {
+            transform: rotate(-45deg) translate(7px, 7px);
+        }
+        &::after {
+            transform: rotate(45deg) translate(7px, -7px);
+        }
+    }
+}
+@media (min-width: 1024px) {
+    nav {
+        padding: 45px 4vw 0 4vw;
+        &.--active {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+            height: 58px;
+            padding-top: 10px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin: 0 01px;
+            &:hover {
+                color: $orange-color;
+            }
+        }
+        .nav__list {
+            width: calc(100% - (350px));
+            p {
+                margin: 0 25px;
+                &:nth-child(1) {
+                    font-size: 2rem;
+                    margin-right: 100px;
+                }
+            }
+        }
+    }
+    .nav__logInButtons {
+        width: 350px;
+        @include centerFlex(row, flex-end);
+        animation: none;
+        align-items: flex-start;
+        button {
+            @include button;
+            transition: none;
+            animation: none;
+            &:nth-child(1) {
+                background-color: white;
+                color: $blue-color;
+                border: 1px solid $blue-color;
+            }
+        }
+    }
+}
+
+@keyframes showNaviListElements {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes showNaviListImage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.15;
+    }
+}
