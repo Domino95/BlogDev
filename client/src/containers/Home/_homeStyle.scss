@@ -164,8 +164,10 @@
             }
             .column {
                 img {
+                    transform: scale(0.3);
+                    transition: 0.3s ease;
                     &:hover {
-                        transform: scale(0.7);
+                        transform: scale(0.4);
                     }
                 }
             }

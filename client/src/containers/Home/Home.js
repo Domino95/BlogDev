@@ -11,7 +11,7 @@ const Home = () => {
         switch (e.target.id) {
             case "add":
                 console.log(column[0].offsetWidth * 6, slider.scrollLeft)
-                if (column[0].offsetWidth * 6 <= slider.scrollLeft) {
+                if (column[0].offsetWidth * 6 <= (slider.scrollLeft + 2)) {
                     slider.scrollLeft = 0
                 }
                 else (slider.scrollLeft += column[0].offsetWidth)

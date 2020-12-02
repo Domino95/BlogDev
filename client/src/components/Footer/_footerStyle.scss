@@ -17,14 +17,83 @@ img.footerWave {
     position: relative;
     bottom: -15px;
 }
-
 footer {
     width: 100vw;
-    height: 100px;
-    padding: 0 4vw;
+    height: 300px;
+    padding: 5px 6vw 10px 6vw;
     background-color: $blue-color;
-    @include centerFlex(row, center);
+    @include centerFlex(column, space-around);
+    align-items: flex-start;
+    position: relative;
     h1 {
         color: white;
+        width: 100%;
+        font-size: 1.7rem;
+    }
+    .media {
+        width: 100%;
+        position: relative;
+        @include centerFlex(row, space-around);
+        flex-wrap: wrap;
+        align-items: baseline;
+        &__container {
+            margin-right: 10px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            @include centerFlex(row, center);
+            align-items: center;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: 0.7s ease;
+            margin-bottom: 40px;
+            &:hover {
+                background-color: white;
+                svg {
+                    fill: $blue-color;
+                }
+            }
+            svg {
+                width: 15px;
+                height: 15px;
+                fill: white;
+            }
+        }
+    }
+    p {
+        color: white;
+        text-align: center;
+    }
+    &:after {
+        position: absolute;
+        content: "";
+        width: 88%;
+        height: 1px;
+        background-color: white;
+        bottom: 10%;
+    }
+}
+@media (min-width: 1024px) {
+    footer {
+        .media {
+            max-width: 65%;
+            flex-wrap: nowrap;
+            &__container {
+                margin-right: 20px;
+                width: 40px;
+                height: 40px;
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    fill: white;
+                }
+            }
+        }
+        p {
+            color: white;
+        }
+        &:after {
+            bottom: 15%;
+        }
     }
 }
