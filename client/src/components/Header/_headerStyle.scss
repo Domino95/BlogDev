@@ -35,7 +35,7 @@ nav {
             position: absolute;
             @include centerFlex(column, center);
             img {
-                width: auto;
+                width: 300%;
                 position: absolute;
                 animation: showNaviListImage 1s 0.5s both;
             }
@@ -63,15 +63,20 @@ nav {
 .nav__logInButtons {
     width: 100%;
     @include centerFlex(column, center);
-    button {
-        @include button;
-        width: 150px;
-        margin: 20px;
-        animation: showNaviListElements 0.5s 0.5s both;
+    a {
+        margin: 0;
         &:nth-child(1) {
-            background-color: white;
-            color: $blue-color;
-            border: 1px solid $blue-color;
+            button {
+                background-color: white;
+                color: $blue-color;
+                border: 1px solid $blue-color;
+            }
+        }
+        button {
+            @include button;
+            width: 150px;
+            margin: 20px;
+            animation: showNaviListElements 0.5s 0.5s both;
         }
     }
 }
@@ -148,14 +153,10 @@ nav {
         @include centerFlex(row, flex-end);
         animation: none;
         align-items: flex-start;
-        button {
-            @include button;
-            transition: none;
-            animation: none;
-            &:nth-child(1) {
-                background-color: white;
-                color: $blue-color;
-                border: 1px solid $blue-color;
+        a {
+            button {
+                @include button;
+                animation: none;
             }
         }
     }

@@ -1,0 +1,126 @@
+.Login {
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
+    @include centerFlex(row, center);
+    align-items: center;
+    img {
+        width: 100%;
+        position: absolute;
+        opacity: 0.4;
+        z-index: -1;
+        bottom: 0;
+    }
+    h2 {
+        width: 220px;
+        margin-bottom: 50px;
+        text-align: center;
+        position: relative;
+        letter-spacing: 2px;
+        &::before {
+            position: absolute;
+            content: "";
+            bottom: -25px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 50%;
+            height: 2px;
+            background-color: $blue-color;
+        }
+    }
+    form {
+        @include centerFlex(column, center);
+        width: 50%;
+        div {
+            position: relative;
+            @include centerFlex(column, center);
+            svg {
+                position: absolute;
+                width: 20px;
+                right: 35px;
+                cursor: pointer;
+                fill: rgb(69, 69, 69);
+                &:hover {
+                    fill: $blue-color;
+                }
+            }
+            label {
+                position: absolute;
+                top: 32px;
+                left: 40px;
+                color: rgb(69, 69, 69);
+                transition: 0.5s ease;
+                pointer-events: none;
+                z-index: 1;
+                &.--active {
+                    top: 10px;
+                    left: 30px;
+                    background-color: white;
+                    font-size: 15px;
+                    padding: 0 10px;
+                }
+            }
+            input {
+                margin: 20px;
+                width: 300px;
+                height: 45px;
+                border-radius: 5px;
+                font-size: 1rem;
+                padding-left: 20px;
+                border: 2px solid $blue-color;
+                outline: none;
+                &.required {
+                    border: 2px solid $blue-color;
+                }
+                &:focus:invalid {
+                    border: 2px solid red;
+                }
+                &:required:focus:valid {
+                    border: 2px solid green;
+                }
+                &:required:valid {
+                    border: 2px solid green;
+                }
+                &:required:focus ~ label {
+                    top: 10px;
+                    left: 30px;
+                    background-color: white;
+                    font-size: 15px;
+                    padding: 0 10px;
+                }
+            }
+            input[type="submit"] {
+                @include button;
+                padding-left: 0;
+                width: 200px;
+                height: 40px;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+@media (min-width: 1024px) {
+    .Login {
+        h2 {
+            width: unset;
+        }
+        img {
+            width: 55%;
+            position: relative;
+            opacity: 0.8;
+            z-index: 1;
+            bottom: unset;
+        }
+        form {
+            div {
+                input {
+                    margin: 20px;
+                    width: 400px;
+                    height: 45px;
+                }
+                input[type="submit"] {
+                    width: 250px;
+                }
+            }
+        }
+    }
+}

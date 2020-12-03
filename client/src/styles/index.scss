@@ -4,18 +4,20 @@
 @import "../containers/Home/homeStyle";
 @import "../components/Footer/footerStyle";
 @import "../containers/Topics//topicsStyle";
+@import "../containers/Login//loginStyle";
 
 * {
     margin: 0;
     box-sizing: border-box;
 }
-body {
+html {
     font-family: "Exo", sans-serif;
 }
 p {
     color: rgb(69, 69, 69);
 }
 a {
+    font-size: 1.3rem;
     text-decoration: none;
     color: black;
     margin: 30px;

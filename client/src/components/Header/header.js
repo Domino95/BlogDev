@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Img from '../../img/3236267.jpg'
 const Logo = "BlogDev </>"
 
@@ -53,8 +53,8 @@ const Header = () => {
                                 <h2>   <NavLink exact to="/"> Home</NavLink></h2>
                                 <h2> <NavLink to="/topics">Topics</NavLink></h2>
                                 <div className="nav__logInButtons">
-                                    <button>Sign in</button>
-                                    <button> Log in</button>
+                                    <Link to="/login"><button> Sign in</button></Link>
+                                    <Link to="/login"><button> Log in</button></Link>
                                 </div>
                             </div>
                         }
@@ -64,11 +64,11 @@ const Header = () => {
                         <div className="nav__list">
                             <p>{Logo}</p>
                             <h2>   <NavLink exact to="/"> Home</NavLink></h2>
-                            <h2> <NavLink to="/topics">Topics</NavLink></h2>
+                            <h2> <NavLink exact to="/topics">Topics</NavLink></h2>
                         </div>
                         <div className="nav__logInButtons">
-                            <button>Sign in</button>
-                            <button> Log in</button>
+                            <Link to="/login"><button> Sign in</button></Link>
+                            <Link to="/login"><button> Log in</button></Link>
                         </div>
                     </>
                 }
