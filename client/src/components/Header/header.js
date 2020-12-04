@@ -50,11 +50,11 @@ const Header = () => {
                         {hamburgerActive &&
                             <div className="nav__list__mobile">
                                 <img src={Img} alt="man" />
-                                <h2>   <NavLink exact to="/"> Home</NavLink></h2>
-                                <h2> <NavLink to="/topics">Topics</NavLink></h2>
+                                <h2>   <NavLink onClick={handleHamburgerMenuActive} exact to="/"> Home</NavLink></h2>
+                                <h2> <NavLink onClick={handleHamburgerMenuActive} to="/topics">Topics</NavLink></h2>
                                 <div className="nav__logInButtons">
-                                    <Link to="/login"><button> Sign in</button></Link>
-                                    <Link to="/login"><button> Log in</button></Link>
+                                    <Link onClick={handleHamburgerMenuActive} to="/register"><button> Sign in</button></Link>
+                                    <Link onClick={handleHamburgerMenuActive} to="/login"><button> Log in</button></Link>
                                 </div>
                             </div>
                         }
@@ -67,7 +67,7 @@ const Header = () => {
                             <h2> <NavLink exact to="/topics">Topics</NavLink></h2>
                         </div>
                         <div className="nav__logInButtons">
-                            <Link to="/login"><button> Sign in</button></Link>
+                            <Link to="/register"><button> Sign in</button></Link>
                             <Link to="/login"><button> Log in</button></Link>
                         </div>
                     </>

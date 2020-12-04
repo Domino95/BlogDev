@@ -1,8 +1,9 @@
-.Login {
+.Authentication {
     width: 100vw;
     height: calc(var(--vh, 1vh) * 100);
-    @include centerFlex(row, center);
+    @include centerFlex(row, space-around);
     align-items: center;
+
     img {
         width: 100%;
         position: absolute;
@@ -10,26 +11,33 @@
         z-index: -1;
         bottom: 0;
     }
-    h2 {
-        width: 220px;
-        margin-bottom: 50px;
-        text-align: center;
-        position: relative;
-        letter-spacing: 2px;
-        &::before {
-            position: absolute;
-            content: "";
-            bottom: -25px;
-            left: 50%;
-            transform: translate(-50%, 0);
-            width: 50%;
-            height: 2px;
-            background-color: $blue-color;
-        }
-    }
     form {
-        @include centerFlex(column, center);
+        &.login {
+            padding-top: 0 !important;
+        }
+        @include centerFlex(column, space-around);
         width: 50%;
+        h4 {
+            margin-top: 10px;
+            color: red;
+        }
+        h2 {
+            width: 260px;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            letter-spacing: 2px;
+            &::before {
+                position: absolute;
+                content: "";
+                bottom: -25px;
+                left: 50%;
+                transform: translate(-50%, 0);
+                width: 50%;
+                height: 2px;
+                background-color: $blue-color;
+            }
+        }
         div {
             position: relative;
             @include centerFlex(column, center);
@@ -46,7 +54,7 @@
             label {
                 position: absolute;
                 top: 32px;
-                left: 40px;
+                left: 45px;
                 color: rgb(69, 69, 69);
                 transition: 0.5s ease;
                 pointer-events: none;
@@ -59,6 +67,12 @@
                     padding: 0 10px;
                 }
             }
+            .invalidPassword {
+                border: 2px solid red !important;
+            }
+            .invalid {
+                border: 2px solid red;
+            }
             input {
                 margin: 20px;
                 width: 300px;
@@ -68,6 +82,7 @@
                 padding-left: 20px;
                 border: 2px solid $blue-color;
                 outline: none;
+
                 &.required {
                     border: 2px solid $blue-color;
                 }
@@ -80,7 +95,7 @@
                 &:required:valid {
                     border: 2px solid green;
                 }
-                &:required:focus ~ label {
+                &:focus ~ label {
                     top: 10px;
                     left: 30px;
                     background-color: white;
@@ -95,11 +110,35 @@
                 height: 40px;
                 margin-top: 30px;
             }
+            p {
+                font-size: 10px;
+                text-align: left;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                padding-left: 30px;
+                bottom: 0;
+                position: absolute;
+            }
+        }
+    }
+}
+@media (max-width: 320px) {
+    .Authentication {
+        form {
+            padding-top: 100px;
+        }
+    }
+}
+@media (max-width: 420px) {
+    .Authentication {
+        form {
+            padding-top: 90px;
         }
     }
 }
 @media (min-width: 1024px) {
-    .Login {
+    .Authentication {
         h2 {
             width: unset;
         }

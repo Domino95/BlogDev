@@ -6,7 +6,7 @@ nav {
     @include centerFlex;
     align-items: flex-start;
     position: fixed;
-    z-index: 99;
+    z-index: 8;
     transition: 0.7s ease;
     p {
         font-size: 1rem;
@@ -21,7 +21,6 @@ nav {
     .nav__list {
         width: calc(100% - (25px));
         @include centerFlex(row, flex-start);
-        z-index: 10;
         p {
             &:nth-child(1) {
                 cursor: default;
@@ -34,6 +33,8 @@ nav {
             width: 100%;
             position: absolute;
             @include centerFlex(column, center);
+            z-index: 10;
+
             img {
                 width: 300%;
                 position: absolute;
@@ -58,6 +59,7 @@ nav {
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
         @include centerFlex(row, center);
         align-items: flex-start;
+        z-index: 10;
     }
 }
 .nav__logInButtons {

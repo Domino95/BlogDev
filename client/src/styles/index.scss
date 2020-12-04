@@ -4,7 +4,7 @@
 @import "../containers/Home/homeStyle";
 @import "../components/Footer/footerStyle";
 @import "../containers/Topics//topicsStyle";
-@import "../containers/Login//loginStyle";
+@import "../containers/Authentication/Login/loginStyle";
 
 * {
     margin: 0;
@@ -12,6 +12,7 @@
 }
 html {
     font-family: "Exo", sans-serif;
+    animation: enterPage 1s ease;
 }
 p {
     color: rgb(69, 69, 69);
@@ -24,4 +25,13 @@ a {
 }
 .active {
     color: $orange-color;
+}
+
+@keyframes enterPage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
