@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import People from "../../../img/people.jpg"
+import axios from 'axios'
 import { handleFormLabel, handlePasswordType, validation } from '../helpers'
 
 const Register = () => {
@@ -30,19 +31,26 @@ const Register = () => {
         setUser({ ...user, [id]: value })
     }
 
-    const reisterSumbit = e => {
+    const reigsterSumbit = e => {
         e.preventDefault()
         if (!validation(user.password, user.repeatPassword))
             setError("Passwords must be the same")
         else
-            setError("Everythng is ok!")
+            axios.post('/user/register', { ...user })
+                .then(() => {
+                    console.log("!OK")
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
     }
+
 
     return (
         <div className="Authentication">
             <img src={People} alt="people"></img>
 
-            <form onSubmit={reisterSumbit} >
+            <form onSubmit={reigsterSumbit} >
                 <h2>Register to BlogDev</h2>
                 <h4>{Error}</h4>
                 <div ref={EmailRef}>

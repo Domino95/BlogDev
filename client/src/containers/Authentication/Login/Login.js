@@ -27,7 +27,7 @@ const Login = () => {
 
     return (
         <div className="Authentication">
-            <form class="login">
+            <form className="login">
                 <h2>Login to BlogDev</h2>
                 <h4>{Error}</h4>
                 <div ref={emailRef}>
