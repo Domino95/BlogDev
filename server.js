@@ -1,18 +1,24 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const fileUpload = require('express-fileupload')
+const path = require('path')
 const router = require('./routes/users')
-const PORT = process.env.PORT || 3000
 const app = express()
 
 
 
+app.use(fileUpload({ useTempFiles: true }))
 app.use(bodyParser.json())
 app.use(router)
-router.use(function (req, res,) {
-    res.status(404).send("<h1>PAGE NOT FOUND 404</h1>")
+app.use(express.static('client/public'))
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client', 'public', 'index.html'))
 })
 
+
+
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log("succes")
 })
