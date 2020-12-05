@@ -10,7 +10,7 @@ const Register = () => {
     const PasswordCofirmRef = useRef()
     const [Error, setError] = useState(null)
     const [user, setUser] = useState({
-        email: '', username: "", password: '', repeatPassword: ""
+        email: '', userName: "", password: '', repeatPassword: ""
     })
 
     document.addEventListener('input', (e) => {
@@ -24,6 +24,7 @@ const Register = () => {
         else if (repeatPassword.value !== password.value) repeatPassword.classList.add("invalidPassword")
         else repeatPassword.classList.remove("invalidPassword")
     })
+    console.log(document.cookie)
 
     const onChangeInput = (e, ref) => {
         const { id, value } = e.target;
@@ -36,9 +37,9 @@ const Register = () => {
         if (!validation(user.password, user.repeatPassword))
             setError("Passwords must be the same")
         else
-            axios.post('/user/register', { ...user })
-                .then(() => {
-                    console.log("!OK")
+            axios.post('http://localhost:3000/user/register', { ...user })
+                .then((response) => {
+                    console.log(response)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -60,7 +61,7 @@ const Register = () => {
                 </div>
 
                 <div ref={UsernameRef}>
-                    <input type="text" id="username" minLength="4" required value={user.username} onChange={e => onChangeInput(e, UsernameRef)}></input>
+                    <input type="text" id="userName" minLength="4" required value={user.userName} onChange={e => onChangeInput(e, UsernameRef)}></input>
                     <label>Username</label>
                     <p hidden={true} >Username must contain min 4 characters </p>
                 </div>
