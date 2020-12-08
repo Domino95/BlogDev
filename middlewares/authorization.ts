@@ -2,7 +2,6 @@ import { Response, NextFunction } from "express";
 import reqUserId from '../interfaces/reqUserId'
 import jwt from 'jsonwebtoken';
 import tokenData from '../interfaces/tokenData'
-require('dotenv').config()
 declare const process: {
     env: {
         SECRET_ACCES_TOKEN: string,

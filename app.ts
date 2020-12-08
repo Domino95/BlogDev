@@ -5,6 +5,8 @@ import path from 'path'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import ControllerInterface from './interfaces/controller'
+require('dotenv').config()
+
 //Declare Env variables
 declare const process: {
     env: {
