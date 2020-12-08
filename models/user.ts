@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
+import userInterface from '../interfaces/user'
 
-const userSchema = mongoose.Schema({
 
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true
@@ -19,5 +20,4 @@ const userSchema = mongoose.Schema({
         timestamps: true
     }
 )
-
-module.exports = mongoose.model("Users", userSchema)
+export const userModel = mongoose.model<userInterface & mongoose.Document>('User', userSchema);
