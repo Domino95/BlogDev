@@ -5,6 +5,7 @@ import path from 'path'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import ControllerInterface from './interfaces/controller'
+import { errorMiddleware } from './middlewares/error'
 require('dotenv').config()
 
 //Declare Env variables
@@ -23,6 +24,7 @@ class App {
         this.connectDatabase()
         this.initializeMiddlewares()
         this.initializeControllers(controllers)
+        this.initializeErrorMidlewares()
         this.returnClient()
 
     }
@@ -37,6 +39,9 @@ class App {
         controllers.forEach((item) => {
             this.app.use('/', item.router);
         });
+    }
+    private initializeErrorMidlewares() {
+        this.app.use(errorMiddleware)
     }
 
     private returnClient() {

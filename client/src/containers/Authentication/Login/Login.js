@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import People from "../../../img/people.jpg"
+import axios from 'axios'
 import { handleFormLabel, handlePasswordType, validation } from '../helpers'
 
 const Login = () => {
@@ -21,13 +22,20 @@ const Login = () => {
         else e.target.className = ""
     })
 
-    const loginSumbit = () => {
+    const loginSumbit = e => {
         e.preventDefault()
+        axios.post('http://localhost:3000/authentication/login', { ...user })
+            .then((response) => {
+                console.log(response.data, response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     return (
         <div className="Authentication">
-            <form className="login">
+            <form className="login" onSubmit={(e) => loginSumbit(e)}>
                 <h2>Login to BlogDev</h2>
                 <h4>{Error}</h4>
                 <div ref={emailRef}>

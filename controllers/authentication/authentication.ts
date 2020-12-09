@@ -41,13 +41,12 @@ class Authentication implements Controller {
             const accesToken = this.authenticationService.createAccesToken(newUser)
 
             res.cookie('accesToken', accesToken, {
-                httpOnly: true,
-                maxAge: 60 * 60,
+                maxAge: 60 * 60 * 3,
                 sameSite: true,
                 secure: false
             })
 
-            res.json("Register succes")
+            res.json({ email: newUser.email, userName: newUser.userName })
 
         }
         catch (error) {
@@ -68,14 +67,13 @@ class Authentication implements Controller {
             const accesToken = this.authenticationService.createAccesToken(user)
 
             res.cookie('accesToken', accesToken, {
-                httpOnly: true,
-                maxAge: 60 * 60,
-                path: '/',
+                maxAge: 60 * 60 * 3,
                 sameSite: true,
                 secure: false
             })
 
-            res.json("Login succes")
+            res.json({ email: user.email, userName: user.userName })
+
 
         } catch (error) {
             return res.status(500).json({ msg: error.message })

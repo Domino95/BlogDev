@@ -37,9 +37,9 @@ const Register = () => {
         if (!validation(user.password, user.repeatPassword))
             setError("Passwords must be the same")
         else
-            axios.post('http://localhost:3000/user/register', { ...user })
+            axios.post('http://localhost:3000/authentication/register', { ...user })
                 .then((response) => {
-                    console.log(response)
+                    console.log(response.data, respone)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -51,7 +51,7 @@ const Register = () => {
         <div className="Authentication">
             <img src={People} alt="people"></img>
 
-            <form onSubmit={reigsterSumbit} >
+            <form onSubmit={(e) => reigsterSumbit(e)} >
                 <h2>Register to BlogDev</h2>
                 <h4>{Error}</h4>
                 <div ref={EmailRef}>
