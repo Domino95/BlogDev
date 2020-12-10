@@ -3,6 +3,8 @@ import peopleImg from '../../img/11115.jpg'
 import Wave3 from '../../img/wave3.svg'
 import Wave2 from '../../img/wave2.svg'
 import { array } from './section3array'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const Home = () => {
 
     function generateSlider(e) {
@@ -10,7 +12,6 @@ const Home = () => {
         let slider = document.querySelector('.slider')
         switch (e.target.id) {
             case "add":
-                console.log(column[0].offsetWidth * 6, slider.scrollLeft)
                 if (column[0].offsetWidth * 6 <= (slider.scrollLeft + 2)) {
                     slider.scrollLeft = 0
                 }
@@ -30,7 +31,6 @@ const Home = () => {
 
     return (
         < div className="home" >
-
             <div className="home__firstSection">
                 <div className="home__firstSection__box">
                     <h1>Welcome to the BlogDev</h1>
@@ -76,7 +76,7 @@ The element will then take up the specified width, and the remaining space will 
                     {array.map((item, index) => {
                         return (item &&
                             <div key={index} className="column">
-                                <img src={item.src}></img>
+                                <LazyLoadImage src={item.src}></LazyLoadImage>
                             </div>)
                     })}
                 </div>

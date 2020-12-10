@@ -1,9 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import People from "../../../img/people.jpg"
 import axios from 'axios'
 import { handleFormLabel, handlePasswordType, validation } from '../helpers'
+import { GlobalState } from '../../../api/globalState'
+import Spinner from '../../../components/Spinner/spinner'
 
 const Register = () => {
+    const state = useContext(GlobalState)
+    const [setIsLogged] = state.isLogged
+    const [loading, setLoading] = useState(false)
     const EmailRef = useRef()
     const UsernameRef = useRef()
     const PasswordRef = useRef()
@@ -24,7 +29,6 @@ const Register = () => {
         else if (repeatPassword.value !== password.value) repeatPassword.classList.add("invalidPassword")
         else repeatPassword.classList.remove("invalidPassword")
     })
-    console.log(document.cookie)
 
     const onChangeInput = (e, ref) => {
         const { id, value } = e.target;
@@ -32,25 +36,29 @@ const Register = () => {
         setUser({ ...user, [id]: value })
     }
 
-    const reigsterSumbit = e => {
+    const reigsterSumbit = async (e) => {
         e.preventDefault()
         if (!validation(user.password, user.repeatPassword))
             setError("Passwords must be the same")
         else
-            axios.post('http://localhost:3000/authentication/register', { ...user })
-                .then((response) => {
-                    console.log(response.data, respone)
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+            try {
+                const response = await axios.post('http://localhost:3000/authentication/login', { ...user })
+                localStorage.setItem('email', response.data.email)
+                localStorage.setItem('userName', response.data.userName)
+                setIsLogged(true)
+                history.push('/')
+            }
+            catch (err) {
+                setError(err.response.data.msg)
+                setLoading(false)
+            }
     }
 
-
     return (
-        <div className="Authentication">
-            <img src={People} alt="people"></img>
 
+        <div className="Authentication">
+            {loading && <Spinner />}
+            <img src={People} alt="people"></img>
             <form onSubmit={(e) => reigsterSumbit(e)} >
                 <h2>Register to BlogDev</h2>
                 <h4>{Error}</h4>

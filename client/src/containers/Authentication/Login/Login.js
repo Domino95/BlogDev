@@ -1,11 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import People from "../../../img/people.jpg"
 import axios from 'axios'
-import { handleFormLabel, handlePasswordType, validation } from '../helpers'
+import { handleFormLabel, handlePasswordType } from '../helpers'
+import Spinner from '../../../components/Spinner/spinner'
+import { GlobalState } from '../../../api/globalState'
+import { useHistory } from "react-router-dom";
+
 
 const Login = () => {
+    let history = useHistory();
+    const state = useContext(GlobalState)
+    const [isLogged, setIsLogged] = state.isLogged
     const emailRef = useRef()
     const passwordRef = useRef()
+    const [loading, setLoading] = useState(false)
     const [Error, setError] = useState(null)
     const [user, setUser] = useState({
         email: '', password: ''
@@ -22,19 +30,25 @@ const Login = () => {
         else e.target.className = ""
     })
 
-    const loginSumbit = e => {
+    const loginSumbit = async e => {
+        setLoading(true)
         e.preventDefault()
-        axios.post('http://localhost:3000/authentication/login', { ...user })
-            .then((response) => {
-                console.log(response.data, response)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+        try {
+            const response = await axios.post('http://localhost:3000/authentication/login', { ...user })
+            localStorage.setItem('email', response.data.email)
+            localStorage.setItem('userName', response.data.userName)
+            setIsLogged(true)
+            history.push('/')
+        }
+        catch (err) {
+            setError(err.response.data.msg)
+            setLoading(false)
+        }
     }
 
     return (
         <div className="Authentication">
+            {loading && <Spinner />}
             <form className="login" onSubmit={(e) => loginSumbit(e)}>
                 <h2>Login to BlogDev</h2>
                 <h4>{Error}</h4>
