@@ -11,7 +11,7 @@ class AuthenticationService {
 
     public createAccesToken(user: userInterface) {
         const userId = { _id: user._id }
-        return jwt.sign(userId, `${process.env.SECRET_ACCES_TOKEN}`, { expiresIn: "3h" })
+        return jwt.sign(userId, `${process.env.SECRET_ACCES_TOKEN}`, { expiresIn: "72h" })
     }
 
     public createRefreshToken(user: userInterface) {

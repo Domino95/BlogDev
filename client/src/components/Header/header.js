@@ -1,74 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import Img from '../../img/3236267.jpg'
+import { GlobalState } from '../../api/globalState'
+import UserPopUp from './UserPopUp';
+import HamburgerMenu from './HamburgerMenu';
 const Logo = "BlogDev </>"
 
 const Header = () => {
-    const [hamburgerActive, sethamburgerActive] = useState(false)
+    const userName = localStorage.getItem("userName")
+    const state = useContext(GlobalState)
+    const [isLogged, setIsLogged] = state.isLogged
     const [mobileView, setmobileView] = useState(() => {
         if (window.innerWidth < 1024) return true
         return false
     })
+
+    window.addEventListener('scroll', () => handleSetNaviActive())
     function handleSetNaviActive() {
         if (window.scrollY == 0) document.querySelector('nav').classList.remove('--active')
         else document.querySelector('nav').classList.add('--active')
     }
+
+    window.addEventListener('resize', () => handleSetmobileView())
     function handleSetmobileView() {
         if (window.innerWidth < 1024 && mobileView === false) setmobileView(true)
         if (window.innerWidth >= 1024 && mobileView === true) setmobileView(false)
     }
 
-    window.addEventListener('scroll', () => handleSetNaviActive())
-    window.addEventListener('resize', () => handleSetmobileView())
-
-
-    const handleHamburgerMenuActive = function () {
-        if (hamburgerActive) {
-            sethamburgerActive(false)
-            document.querySelector('body').style.overflow = "auto"
-            document.querySelector('nav').classList.remove('--open')
-            handleSetNaviActive()
-        }
-        else {
-            sethamburgerActive(true)
-            document.querySelector('body').style.overflow = "hidden"
-            document.querySelector('nav').classList.add('--open')
-        }
-    }
 
     return (
         <header>
             <nav>
                 {mobileView ?
                     <>
-                        <div className="nav__list">
-                            <p>{Logo}</p>
-                        </div>
-                        <div className="nav__hamburger" onClick={handleHamburgerMenuActive}>
-                            <div className={hamburgerActive ? "hamburgerMenu open" : "hamburgerMenu"}></div>
-                        </div>
-                        {hamburgerActive &&
-                            <div className="nav__list__mobile">
-                                <img src={Img} alt="man" />
-                                <h2>   <NavLink onClick={handleHamburgerMenuActive} exact to="/"> Home</NavLink></h2>
-                                <h2> <NavLink onClick={handleHamburgerMenuActive} to="/topics">Topics</NavLink></h2>
-                                <div className="nav__logInButtons">
-                                    <Link onClick={handleHamburgerMenuActive} to="/register"><button> Sign in</button></Link>
-                                    <Link onClick={handleHamburgerMenuActive} to="/login"><button> Log in</button></Link>
-                                </div>
-                            </div>
-                        }
+                        <div className="nav__pageList"> <p>{Logo}</p> </div>
+                        {isLogged && <UserPopUp setIsLogged={setIsLogged} />}
+                        <HamburgerMenu isLogged={isLogged} handleSetNaviActive={handleSetNaviActive} />
                     </>
                     :
                     <>
-                        <div className="nav__list">
+                        <div className="nav__pageList">
                             <p>{Logo}</p>
                             <h2>   <NavLink exact to="/"> Home</NavLink></h2>
                             <h2> <NavLink exact to="/topics">Topics</NavLink></h2>
                         </div>
+
                         <div className="nav__logInButtons">
-                            <Link to="/register"><button> Sign in</button></Link>
-                            <Link to="/login"><button> Log in</button></Link>
+                            {isLogged ?
+                                <>
+                                    <h3>{userName}</h3>
+                                    <UserPopUp setIsLogged={setIsLogged} />
+                                </>
+                                :
+                                <>
+                                    <Link to="/register"><button> Sign in</button></Link>
+                                    <Link to="/login"><button> Log in</button></Link>
+                                </>
+                            }
                         </div>
                     </>
                 }

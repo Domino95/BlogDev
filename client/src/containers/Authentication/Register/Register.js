@@ -4,10 +4,13 @@ import axios from 'axios'
 import { handleFormLabel, handlePasswordType, validation } from '../helpers'
 import { GlobalState } from '../../../api/globalState'
 import Spinner from '../../../components/Spinner/spinner'
+import { useHistory } from "react-router-dom";
+
 
 const Register = () => {
+    let history = useHistory();
     const state = useContext(GlobalState)
-    const [setIsLogged] = state.isLogged
+    const [isLogged, setIsLogged] = state.isLogged
     const [loading, setLoading] = useState(false)
     const EmailRef = useRef()
     const UsernameRef = useRef()
@@ -36,13 +39,15 @@ const Register = () => {
         setUser({ ...user, [id]: value })
     }
 
-    const reigsterSumbit = async (e) => {
+    const reigsterSumbit = async e => {
         e.preventDefault()
-        if (!validation(user.password, user.repeatPassword))
+        if (!validation(user.password, user.repeatPassword)) {
             setError("Passwords must be the same")
-        else
+        }
+        else {
+            setLoading(true)
             try {
-                const response = await axios.post('http://localhost:3000/authentication/login', { ...user })
+                const response = await axios.post('http://localhost:3000/authentication/register', { ...user })
                 localStorage.setItem('email', response.data.email)
                 localStorage.setItem('userName', response.data.userName)
                 setIsLogged(true)
@@ -52,6 +57,7 @@ const Register = () => {
                 setError(err.response.data.msg)
                 setLoading(false)
             }
+        }
     }
 
     return (

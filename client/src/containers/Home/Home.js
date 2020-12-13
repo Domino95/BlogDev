@@ -4,9 +4,10 @@ import Wave3 from '../../img/wave3.svg'
 import Wave2 from '../../img/wave2.svg'
 import { array } from './section3array'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import CardBox from '../../components/CardBox/CardBox'
+import { constants } from '../../constants/constants'
 
 const Home = () => {
-
     function generateSlider(e) {
         let column = document.querySelectorAll('.column')
         let slider = document.querySelector('.slider')
@@ -31,6 +32,7 @@ const Home = () => {
 
     return (
         < div className="home" >
+
             <div className="home__firstSection">
                 <div className="home__firstSection__box">
                     <h1>Welcome to the BlogDev</h1>
@@ -45,22 +47,14 @@ const Home = () => {
                     <img className="Wave1" src={Wave3} alt="footerSvg" />
                     <img className="Wave2" src={Wave2} alt="footerSvg" />
                 </div>
-
-                <div className="home__secondSection__card">
-                    <div className="card__color">
-                        <span>John</span>  <span>30-11-2020 14:20</span>
-                    </div>
-                    <h2>How to center element</h2>
-                    <p>To horizontally center a block element use margin: auto;
-
-                    Setting the width of the element will prevent it from stretching out to the edges of its container.
-
-The element will then take up the specified width, and the remaining space will be split equally between the two margins</p>
-                    <div className="card__specification">
-                        <span> CSS</span><span> Beginner</span>
-                    </div>
-                </div>
-
+                <CardBox
+                    CARDBOX_USER={constants.HOME_PAGE_CARDBOX_USER}
+                    CARDBOX_DATE={constants.HOME_PAGE_CARDBOX_DATE}
+                    CARDBOX_TITLE={constants.HOME_PAGE_CARDBOX_TITLE}
+                    CARDBOX_CONTEXT={constants.HOME_PAGE_CARDBOX_CONTEXT}
+                    CARDBOX_CATEGORY={constants.HOME_PAGE_CARDBOX_CATEGORY}
+                    CARDBOX_LEVEL={constants.HOME_PAGE_CARDBOX_LEVEL}
+                />
                 <div className="home__secondSection__box">
                     <h1>Choose content</h1>
                     <p>Choose content by the topics that interest you most and
@@ -68,7 +62,8 @@ The element will then take up the specified width, and the remaining space will 
                     <button>Search Topic</button>
                 </div>
             </div>
-            <h1 className="home__title">Let's talk about</h1>
+
+            <h1 className="home_title_ThirdSection">Let's talk about</h1>
             <div className="home__thirdSection">
                 <button id="minus" onClick={(e) => generateSlider(e)} />
                 <button id="add" onClick={(e) => generateSlider(e)} />

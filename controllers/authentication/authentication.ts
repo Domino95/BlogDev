@@ -41,7 +41,7 @@ class Authentication implements Controller {
             const accesToken = this.authenticationService.createAccesToken(newUser)
 
             res.cookie('accesToken', accesToken, {
-                maxAge: 60 * 60 * 3,
+                maxAge: 60 * 60 * 72 * 1000,
                 sameSite: true,
                 secure: false
             })
@@ -66,11 +66,14 @@ class Authentication implements Controller {
 
             const accesToken = this.authenticationService.createAccesToken(user)
 
+
             res.cookie('accesToken', accesToken, {
-                maxAge: 60 * 60 * 3,
+                maxAge: 60 * 60 * 72 * 1000,
                 sameSite: true,
                 secure: false
             })
+
+
 
             res.json({ email: user.email, userName: user.userName })
 
