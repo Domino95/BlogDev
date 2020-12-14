@@ -1,13 +1,13 @@
 import React from 'react'
 import peopleImg from '../../img/11115.jpg'
-import Wave3 from '../../img/wave3.svg'
-import Wave2 from '../../img/wave2.svg'
-import { array } from './section3array'
+import BackgroundImg from '../../components/BackgroundImg/BackgroundImg'
+import { arrayImg } from '../../constants/imagesArray'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import CardBox from '../../components/CardBox/CardBox'
 import { constants } from '../../constants/constants'
 
 const Home = () => {
+
     function generateSlider(e) {
         let column = document.querySelectorAll('.column')
         let slider = document.querySelector('.slider')
@@ -43,10 +43,7 @@ const Home = () => {
             </div>
 
             <div className="home__secondSection">
-                <div className="backgroundImageWaves">
-                    <img className="Wave1" src={Wave3} alt="footerSvg" />
-                    <img className="Wave2" src={Wave2} alt="footerSvg" />
-                </div>
+                <BackgroundImg />
                 <CardBox
                     CARDBOX_USER={constants.HOME_PAGE_CARDBOX_USER}
                     CARDBOX_DATE={constants.HOME_PAGE_CARDBOX_DATE}
@@ -68,7 +65,7 @@ const Home = () => {
                 <button id="minus" onClick={(e) => generateSlider(e)} />
                 <button id="add" onClick={(e) => generateSlider(e)} />
                 <div className="slider">
-                    {array.map((item, index) => {
+                    {arrayImg.map((item, index) => {
                         return (item &&
                             <div key={index} className="column">
                                 <LazyLoadImage src={item.src}></LazyLoadImage>

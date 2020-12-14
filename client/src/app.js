@@ -3,7 +3,7 @@ import React from 'react'
 import Header from "./components/Header/header"
 import Footer from "./components/Footer/footer"
 import Home from './containers/Home/Home'
-import Topics from './containers/Topics/Topics'
+import CreatePost from './containers/CreatePost/CreatePost'
 import Login from './containers/Authentication/Login/Login'
 import Register from './containers/Authentication/Register/Register'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
@@ -26,9 +26,9 @@ class App extends React.Component {
                         <Footer />
                     </Route>
 
-                    <Route exact path='/topics'>
+                    <Route exact path='/create'>
                         <Header />
-                        <Topics />
+                        <CreatePost />
                         <Footer />
                     </Route>
 

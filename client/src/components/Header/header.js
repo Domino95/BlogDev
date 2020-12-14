@@ -26,7 +26,6 @@ const Header = () => {
         if (window.innerWidth >= 1024 && mobileView === true) setmobileView(false)
     }
 
-
     return (
         <header>
             <nav>
@@ -41,7 +40,8 @@ const Header = () => {
                         <div className="nav__pageList">
                             <p>{Logo}</p>
                             <h2>   <NavLink exact to="/"> Home</NavLink></h2>
-                            <h2> <NavLink exact to="/topics">Topics</NavLink></h2>
+                            <h2> <NavLink exact to="/create">Create Post</NavLink></h2>
+                            <h2> <NavLink exact to="/posts">Posts</NavLink></h2>
                         </div>
 
                         <div className="nav__logInButtons">

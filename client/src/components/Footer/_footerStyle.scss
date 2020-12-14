@@ -1,21 +1,6 @@
-img.Wave1 {
-    position: relative;
-    width: 100vw;
-    opacity: 0.05;
-    z-index: -100;
-    bottom: -50px;
-}
-img.Wave2 {
-    position: relative;
-    width: 100vw;
-    opacity: 0.05;
-    z-index: -100;
-    bottom: 5px;
-    bottom: -45px;
-}
 img.footerWave {
     position: relative;
-    bottom: -15px;
+    bottom: -70px;
 }
 footer {
     width: 100vw;
@@ -75,6 +60,9 @@ footer {
     }
 }
 @media (min-width: 1024px) {
+    img.footerWave {
+        bottom: -150px;
+    }
     footer {
         height: 175px;
         .media {

@@ -3,9 +3,10 @@
 @import "../components/Header/headerStyle";
 @import "../containers/Home/homeStyle";
 @import "../components/Footer/footerStyle";
-@import "../containers/Topics//topicsStyle";
+@import "../containers/CreatePost/createPost";
 @import "../containers/Authentication/Login/loginStyle";
 @import "../components/Spinner/spinner";
+@import "../components//CardBox/cardbox";
 
 * {
     margin: 0;
@@ -26,6 +27,21 @@ a {
 }
 .active {
     color: $orange-color;
+}
+img.Wave1 {
+    position: relative;
+    width: 100vw;
+    opacity: 0.1;
+    z-index: -100;
+    bottom: -50px;
+}
+img.Wave2 {
+    position: relative;
+    width: 100vw;
+    opacity: 0.1;
+    z-index: -100;
+    bottom: 5px;
+    bottom: -45px;
 }
 
 @keyframes enterPage {
