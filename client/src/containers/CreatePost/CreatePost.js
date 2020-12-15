@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { arrayImg } from '../../constants/imagesArray'
 import ReturnSvg from '../../constants/LevelSvg'
 import CardBox from '../../components//CardBox/CardBox'
+import WithDynamicContext from '../../components/CardBox/hoc/withDynamicContext'
+
+const CardBoxWithDynamicContext = WithDynamicContext(CardBox)
+
 const CreatePost = () => {
-    const [categoryChecked, setCategoryChecked] = useState()
-    const [levelChecked, setLevelChecked] = useState()
+    const [categoryChecked, setCategoryChecked] = useState(null)
+    const [levelChecked, setLevelChecked] = useState(null)
 
     function chooseCategory(name) {
         if (categoryChecked === name) setCategoryChecked(null)
@@ -61,8 +65,14 @@ const CreatePost = () => {
                     </div>
                 </div>
             </div>
+            <div className="postCreator">
 
-            <CardBox />
+                <CardBoxWithDynamicContext
+                    categoryChecked={categoryChecked}
+                    levelChecked={levelChecked}
+                />
+            </div>
+
 
         </>
     );

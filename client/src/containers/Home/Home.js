@@ -4,8 +4,9 @@ import BackgroundImg from '../../components/BackgroundImg/BackgroundImg'
 import { arrayImg } from '../../constants/imagesArray'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import CardBox from '../../components/CardBox/CardBox'
-import { constants } from '../../constants/constants'
+import WithStaticContext from '../../components/CardBox/hoc/withStatisContext'
 
+const CardBoxWithStaticContext = WithStaticContext(CardBox)
 const Home = () => {
 
     function generateSlider(e) {
@@ -44,14 +45,7 @@ const Home = () => {
 
             <div className="home__secondSection">
                 <BackgroundImg />
-                <CardBox
-                    CARDBOX_USER={constants.HOME_PAGE_CARDBOX_USER}
-                    CARDBOX_DATE={constants.HOME_PAGE_CARDBOX_DATE}
-                    CARDBOX_TITLE={constants.HOME_PAGE_CARDBOX_TITLE}
-                    CARDBOX_CONTEXT={constants.HOME_PAGE_CARDBOX_CONTEXT}
-                    CARDBOX_CATEGORY={constants.HOME_PAGE_CARDBOX_CATEGORY}
-                    CARDBOX_LEVEL={constants.HOME_PAGE_CARDBOX_LEVEL}
-                />
+                <CardBoxWithStaticContext />
                 <div className="home__secondSection__box">
                     <h1>Choose content</h1>
                     <p>Choose content by the topics that interest you most and

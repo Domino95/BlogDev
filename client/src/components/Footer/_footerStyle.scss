@@ -6,7 +6,7 @@ footer {
     width: 100vw;
     height: 300px;
     padding: 5px 6vw 10px 6vw;
-    background-color: $blue-color;
+    background-color: #3659a2;
     @include centerFlex(column, space-around);
     align-items: flex-start;
     position: relative;
@@ -36,7 +36,7 @@ footer {
             &:hover {
                 background-color: white;
                 svg {
-                    fill: $blue-color;
+                    fill: #3659a2;
                 }
             }
             svg {
