@@ -5,7 +5,7 @@ export default (Component) => {
     const children = (
         <>
             <h2>{constants.HOME_PAGE_CARDBOX_TITLE}</h2>
-            <p>{constants.HOME_PAGE_CARDBOX_CONTEXT}</p>
+            <p>{constants.HOME_PAGE_CARDBOX_CONTENT}</p>
         </>
     )
     return (props) => (

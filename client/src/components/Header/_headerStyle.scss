@@ -59,7 +59,7 @@ nav {
             background-color: white;
             @include centerFlex(column, space-around);
             cursor: default;
-            border-radius: 7px;
+            border-radius: 5px;
             h5 {
                 font-size: 15px;
                 letter-spacing: 0px;
@@ -85,7 +85,7 @@ nav {
         }
     }
     .nav__pageList {
-        width: calc(100% - (25px));
+        width: 100%;
         @include centerFlex(row, flex-start);
         p {
             &:nth-child(1) {
@@ -208,7 +208,7 @@ nav {
             }
         }
         .nav__pageList {
-            width: calc(100% - (350px));
+            width: 100%;
             p {
                 margin: 0 25px;
                 &:nth-child(1) {
@@ -219,7 +219,7 @@ nav {
         }
     }
     .nav__logInButtons {
-        width: 350px;
+        width: 200px;
         @include centerFlex(row, flex-end);
         animation: none;
         h3 {

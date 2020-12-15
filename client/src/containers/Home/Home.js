@@ -4,9 +4,9 @@ import BackgroundImg from '../../components/BackgroundImg/BackgroundImg'
 import { arrayImg } from '../../constants/imagesArray'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import CardBox from '../../components/CardBox/CardBox'
-import WithStaticContext from '../../components/CardBox/hoc/withStatisContext'
+import WithStaticContent from '../../components/CardBox/hoc/withStatisContent'
 
-const CardBoxWithStaticContext = WithStaticContext(CardBox)
+const CardBoxWithStaticContent = WithStaticContent(CardBox)
 const Home = () => {
 
     function generateSlider(e) {
@@ -45,7 +45,7 @@ const Home = () => {
 
             <div className="home__secondSection">
                 <BackgroundImg />
-                <CardBoxWithStaticContext />
+                <CardBoxWithStaticContent />
                 <div className="home__secondSection__box">
                     <h1>Choose content</h1>
                     <p>Choose content by the topics that interest you most and

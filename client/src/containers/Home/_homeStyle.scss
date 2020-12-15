@@ -99,10 +99,10 @@
     .home {
         &__firstSection,
         &__secondSection {
-            @include centerFlex(row, center);
+            @include centerFlex(row, space-around);
             padding: 0px 4vw 0 4vw;
             img {
-                width: 60%;
+                width: 825px;
             }
             &__box {
                 width: 350px;
