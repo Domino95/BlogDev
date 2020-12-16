@@ -10,13 +10,13 @@ declare const process: {
 class AuthenticationService {
 
     public createAccesToken(user: userInterface) {
-        const userId = { _id: user._id }
-        return jwt.sign(userId, `${process.env.SECRET_ACCES_TOKEN}`, { expiresIn: "72h" })
+        const { _id, userName } = user
+        return jwt.sign({ _id, userName }, `${process.env.SECRET_ACCES_TOKEN}`, { expiresIn: "72h" })
     }
 
     public createRefreshToken(user: userInterface) {
-        const userId = { _id: user._id }
-        return jwt.sign(userId, `${process.env.REFERSH_ACCES_TOKEN}`, { expiresIn: "30d" })
+        const { _id, userName } = user
+        return jwt.sign({ _id, userName }, `${process.env.REFERSH_ACCES_TOKEN}`, { expiresIn: "30d" })
     }
 
 }

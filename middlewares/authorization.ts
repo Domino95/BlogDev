@@ -1,5 +1,5 @@
 import { Response, NextFunction } from "express";
-import reqUserId from '../interfaces/reqUserId'
+import reqWithUserData from '../interfaces/reqWithUserData'
 import jwt from 'jsonwebtoken';
 import tokenData from '../interfaces/tokenData'
 declare const process: {
@@ -8,7 +8,7 @@ declare const process: {
     }
 }
 
-export const authorization = (req: reqUserId, res: Response, next: NextFunction) => {
+export const authorization = (req: reqWithUserData, res: Response, next: NextFunction) => {
     try {
         const accesToken = req.cookies.accesToken
         console.log(accesToken, req.cookies)
@@ -16,7 +16,9 @@ export const authorization = (req: reqUserId, res: Response, next: NextFunction)
 
         const result = jwt.verify(accesToken, process.env.SECRET_ACCES_TOKEN) as tokenData
         if (!result) return res.status(400).json({ msg: 'invalid authorization token' })
+        console.log("result", result)
         req.userID = result._id
+        req.userName = result.userName
         next()
     }
     catch (error) {

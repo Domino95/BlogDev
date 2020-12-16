@@ -1,5 +1,4 @@
 import { Request, Response, Router } from 'express'
-import reqUserId from '../../interfaces/reqUserId'
 import { userModel } from '../../models/user'
 import Controller from '../../interfaces/controller'
 import bcrypt from 'bcrypt'

@@ -34,6 +34,7 @@ const CreatePost = () => {
             setLoading(false)
         }
         else {
+            await axios.post('/post/createPost', { ...post })
             document.querySelector('body').style.overflow = "auto"
             setLoading(false)
         }
@@ -68,21 +69,21 @@ const CreatePost = () => {
                     <p>Select the level of the topic</p>
                     <div className="topics__list">
 
-                        <div id="level" className={post.level === 'beginner' ? "topics__element checked" : "topics__element"}
-                            onClick={(e) => handlePost('beginner', e)}>
-                            <ReturnSvg level="beginner" />
+                        <div id="level" className={post.level === 'Beginner' ? "topics__element checked" : "topics__element"}
+                            onClick={(e) => handlePost('Beginner', e)}>
+                            <ReturnSvg level="Beginner" />
                             <h3>Beginner</h3>
                         </div>
 
-                        <div id="level" className={post.level === 'medium' ? "topics__element checked" : "topics__element"}
-                            onClick={(e) => handlePost('medium', e)}>
-                            <ReturnSvg level="medium" />
+                        <div id="level" className={post.level === 'Medium' ? "topics__element checked" : "topics__element"}
+                            onClick={(e) => handlePost('Medium', e)}>
+                            <ReturnSvg level="Medium" />
                             <h3>Medium</h3>
                         </div>
 
-                        <div id="level" className={post.level === 'advanced' ? "topics__element checked" : "topics__element"}
-                            onClick={(e) => handlePost('advanced', e)}>
-                            <ReturnSvg level="advanced" />
+                        <div id="level" className={post.level === 'Advanced' ? "topics__element checked" : "topics__element"}
+                            onClick={(e) => handlePost('Advanced', e)}>
+                            <ReturnSvg level="Advanced" />
                             <h3>Advanced</h3>
                         </div>
                     </div>
