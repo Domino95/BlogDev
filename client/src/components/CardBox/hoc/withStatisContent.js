@@ -1,21 +1,24 @@
-import React from 'react';
-import { constants } from '../../../constants/constants'
+import React, { Component } from 'react';
 
-export default (Component) => {
-    const children = (
-        <>
-            <h2>{constants.HOME_PAGE_CARDBOX_TITLE}</h2>
-            <p>{constants.HOME_PAGE_CARDBOX_CONTENT}</p>
-        </>
-    )
-    return (props) => (
-        <Component
-            {...props}
-            children={children}
-            CARDBOX_USER={constants.HOME_PAGE_CARDBOX_USER}
-            CARDBOX_DATE={constants.HOME_PAGE_CARDBOX_DATE}
-            CARDBOX_CATEGORY={constants.HOME_PAGE_CARDBOX_CATEGORY}
-            CARDBOX_LEVEL={constants.HOME_PAGE_CARDBOX_LEVEL}
-        />
-    );
-};
+export default function (WithStaticContent) {
+    return class extends Component {
+        render() {
+            const children = (
+                <>
+                    <h2>{this.props.title}</h2>
+                    <p>{this.props.content}</p>
+                </>
+            )
+            return (
+                < WithStaticContent
+                    {...this.props}
+                    children={children}
+                    CARDBOX_USER={this.props.userName}
+                    CARDBOX_DATE={this.props.date}
+                    CARDBOX_CATEGORY={this.props.category}
+                    CARDBOX_LEVEL={this.props.level}
+                />
+            );
+        }
+    }
+}

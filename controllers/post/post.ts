@@ -48,7 +48,7 @@ class Post implements Controller {
     }
 
     private getAllPosts = async (req: reqWithUserData, res: Response) => {
-        const posts = await postModel.find()
+        const posts = await postModel.find().populate('creator', 'userName')
         if (posts.length > 0) return res.send(posts)
         return res.status(404).send("Posts not found")
     }

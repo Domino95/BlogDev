@@ -6,6 +6,7 @@ import Home from './containers/Home/Home'
 import CreatePost from './containers/CreatePost/CreatePost'
 import Login from './containers/Authentication/Login/Login'
 import Register from './containers/Authentication/Register/Register'
+import Posts from './containers/Posts/Posts'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -40,6 +41,12 @@ class App extends React.Component {
                     <Route exact path='/register'>
                         <Header />
                         <Register />
+                    </Route>
+
+                    <Route exact path='/posts'>
+                        <Header />
+                        <Posts />
+                        <Footer />
                     </Route>
 
                 </Switch>

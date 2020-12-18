@@ -1,0 +1,197 @@
+.posts {
+    padding-top: 150px;
+    width: 100vw;
+    overflow: hidden;
+    @include centerFlex(column, space-around);
+    position: relative;
+    h1 {
+        margin: 20px;
+    }
+
+    &__list {
+        width: 100vw;
+        @include centerFlex(row, space-around);
+        .control_button {
+            left: 10px;
+            z-index: 0;
+            position: absolute;
+            border-width: 0 0 3px 3px;
+            &:nth-child(2) {
+                left: unset;
+                right: 10px;
+                transform: rotate(45deg);
+                border-width: 3px 3px 0 0;
+            }
+        }
+        .slider {
+            display: flex;
+            width: 80vw;
+            align-items: center;
+            overflow: hidden;
+            justify-content: flex-start;
+            position: relative;
+            scroll-behavior: smooth;
+            .element {
+                min-width: 80vw;
+                height: 400px;
+                @include centerFlex(row, center);
+            }
+        }
+
+        .card_box {
+            min-width: 100%;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s ease;
+            transform: scale(0.9);
+            cursor: pointer;
+            p,
+            h2 {
+                margin: 20px;
+                width: 90%;
+            }
+            p {
+                height: 150px;
+                overflow: auto;
+            }
+        }
+    }
+    &__search {
+        @include centerFlex(row, center);
+        width: 100vw;
+        height: 100px;
+        align-items: flex-start;
+        margin-bottom: 100px;
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+        div {
+            min-width: 150px;
+            height: 40px;
+            padding: 10px;
+            margin: 20px 5px 0 5px;
+            border: 1px solid $blue-color;
+            border-radius: 5px;
+            position: relative;
+            @include centerFlex(column, flex-start);
+            align-items: flex-start;
+            cursor: pointer;
+            transition: 0.5s ease;
+            overflow: hidden;
+            pointer-events: none;
+            -webkit-tap-highlight-color: transparent;
+            background-color: white;
+            p {
+                padding-top: 10px;
+                color: black;
+                width: 100%;
+                font-weight: 500;
+
+                &:hover {
+                    width: 100%;
+                    color: #3659a2;
+                    cursor: pointer;
+                }
+            }
+            span {
+                position: absolute;
+                content: "";
+                border-radius: 2px;
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 9px solid transparent;
+                border-top: 7px solid black;
+                right: 5px;
+                top: 14px;
+                pointer-events: all;
+                transition: 0.3s ease;
+            }
+        }
+        .--open {
+            min-width: 150px;
+            height: 160px;
+            padding: 10px;
+            border: 1px solid $blue-color;
+            border-radius: 5px;
+            position: relative;
+            @include centerFlex(column, flex-start);
+            align-items: flex-start;
+            transition: 0.3s ease;
+            background-color: white;
+            pointer-events: all;
+            span {
+                position: absolute;
+                content: "";
+                border-radius: 2px;
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 7px solid black;
+                border-top: 9px solid transparent;
+                right: 5px;
+                top: 5px;
+                pointer-events: all;
+            }
+            &:nth-child(1) {
+                height: 380px;
+                z-index: 10;
+            }
+        }
+    }
+    &__searchButton {
+        @include button;
+        min-width: 150px;
+        margin: 20px auto 10px auto;
+        z-index: 20;
+    }
+    .backgroundImageWaves {
+        position: absolute !important;
+        top: 200px;
+    }
+}
+@media (min-width: 1024px) {
+    .posts {
+        &__list {
+            width: 100vw;
+            .control_button {
+                left: 150px;
+                border-width: 0 0 5px 5px;
+                &:nth-child(2) {
+                    left: unset;
+                    right: 150px;
+                    border-width: 5px 5px 0 0;
+                }
+            }
+            .slider {
+                width: 700px;
+                height: 400px;
+                .element {
+                    min-width: 700px;
+                    height: 400px;
+                }
+            }
+        }
+        .card_box {
+            transform: scale(0.7);
+            &:hover {
+                transform: scale(0.9);
+            }
+        }
+        &__search {
+            div {
+                margin: 50px 20px 0 20px;
+            }
+        }
+        &__searchButton {
+            margin: 50px auto 20px auto;
+            width: 200px;
+            height: 40px;
+        }
+        .backgroundImageWaves {
+            position: absolute !important;
+            top: 200px;
+        }
+    }
+}

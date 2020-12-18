@@ -6,9 +6,9 @@ const medium = ['#010002', '#010002', '#f07c47']
 const ReturnSvg = ({ level }) => {
 
     let levelToReturn
-    if (level === 'beginner') levelToReturn = beginner
-    if (level === 'medium') levelToReturn = medium
-    if (level === 'advanced') levelToReturn = advanced
+    if (level === 'Beginner') levelToReturn = beginner
+    if (level === 'Medium') levelToReturn = medium
+    if (level === 'Advanced') levelToReturn = advanced
 
     return (
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"

@@ -4,6 +4,7 @@ import BackgroundImg from '../../components/BackgroundImg/BackgroundImg'
 import { arrayImg } from '../../constants/imagesArray'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import CardBox from '../../components/CardBox/CardBox'
+import { constants } from '../../constants/constants'
 import WithStaticContent from '../../components/CardBox/hoc/withStatisContent'
 
 const CardBoxWithStaticContent = WithStaticContent(CardBox)
@@ -45,7 +46,16 @@ const Home = () => {
 
             <div className="home__secondSection">
                 <BackgroundImg />
-                <CardBoxWithStaticContent />
+                <CardBoxWithStaticContent
+                    title={constants.HOME_PAGE_CARDBOX_TITLE}
+                    content={constants.HOME_PAGE_CARDBOX_CONTENT}
+                    userName={constants.HOME_PAGE_CARDBOX_USER}
+                    date={constants.HOME_PAGE_CARDBOX_DATE}
+                    category={constants.HOME_PAGE_CARDBOX_CATEGORY}
+                    level={constants.HOME_PAGE_CARDBOX_LEVEL}
+
+
+                />
                 <div className="home__secondSection__box">
                     <h1>Choose content</h1>
                     <p>Choose content by the topics that interest you most and
@@ -56,8 +66,8 @@ const Home = () => {
 
             <h1 className="home_title_ThirdSection">Let's talk about</h1>
             <div className="home__thirdSection">
-                <button id="minus" onClick={(e) => generateSlider(e)} />
-                <button id="add" onClick={(e) => generateSlider(e)} />
+                <button className="control_button" id="minus" onClick={(e) => generateSlider(e)} />
+                <button className="control_button" id="add" onClick={(e) => generateSlider(e)} />
                 <div className="slider">
                     {arrayImg.map((item, index) => {
                         return (item &&
