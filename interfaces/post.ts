@@ -6,9 +6,9 @@ interface Post {
     _id: string
     creator: Types.ObjectId | User
     title: string
-    content: string
-    category: string
-    level: string
+    content: string 
+    category: string 
+    level: string 
     comments?: Comment[]
 }
 export default Post

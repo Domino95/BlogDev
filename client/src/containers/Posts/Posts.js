@@ -7,7 +7,6 @@ import Pagination from "../../components/Pagination/Pagination";
 
 const Posts = () => {
   const [posts, setPosts] = useState();
-  const [FilteredPosts, setFilteredPosts] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [Category, setCategory] = useState("Category");
   const [Level, setLevel] = useState("Level");
@@ -15,14 +14,12 @@ const Posts = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const search = document.querySelector("#search");
 
-  console.log(posts);
-
   useEffect(() => {
     const getPosts = async () => {
       try {
         const response = await axios.get("/post/getAllPosts");
+        console.log(response.data);
         setPosts(response.data.posts);
-        setFilteredPosts(response.data.posts);
         setNumberOfPages(response.data.numberOfPages);
       } catch (error) {
         console.log(error);
@@ -36,15 +33,40 @@ const Posts = () => {
     if (page > 0 && page !== numberOfPages + 1) {
       setIsLoading(true);
       try {
-        const response = await axios.get(`/post/getPosts/${page}}`);
-        setPosts(response.data.posts);
-        setFilteredPosts(response.data);
+        let response;
+        if (Level === "Level" || Category === "Category")
+          response = await axios.get(`/post/getPosts/${page}}`);
+        else
+          response = await axios.post("/post/getFilterPosts", {
+            Level,
+            Category,
+            page,
+          });
+        setPosts(response.data);
         setCurrentPage(page);
       } catch (error) {
         console.log(error);
       }
       setIsLoading(false);
       search.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const filterPosts = async () => {
+    if (Level !== "Level" && Category !== "Category") {
+      setIsLoading(true);
+      try {
+        const response = await axios.post("/post/filterPosts", {
+          Level,
+          Category,
+        });
+        setPosts(response.data.posts);
+        setNumberOfPages(response.data.numberOfPages);
+        setCurrentPage(1);
+      } catch (error) {
+        console.log(error);
+      }
+      setIsLoading(false);
     }
   };
 
@@ -74,7 +96,10 @@ const Posts = () => {
       <BackgroundImg />
       <h1 id="search">Search posts</h1>
 
-      <button className="posts__searchButton"> Search</button>
+      <button className="posts__searchButton" onClick={() => filterPosts()}>
+        {" "}
+        Search
+      </button>
       <div className="posts__search">
         <div id="CategoryContainer" onClick={(e) => handleCategory(e)}>
           <span onClick={(e) => handleSearchActive(e)} id="Category" />
@@ -102,7 +127,7 @@ const Posts = () => {
         </div>
       </div>
 
-      <PostsList posts={FilteredPosts} />
+      <PostsList posts={posts} />
 
       <Pagination
         currentPage={currentPage}
