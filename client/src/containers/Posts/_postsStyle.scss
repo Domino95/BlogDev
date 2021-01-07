@@ -4,70 +4,24 @@
     overflow: hidden;
     @include centerFlex(column, space-around);
     position: relative;
+
     h1 {
         margin: 20px;
+        font-size: 1.5rem;
     }
 
-    &__list {
-        width: 100vw;
-        @include centerFlex(row, space-around);
-        .control_button {
-            left: 10px;
-            z-index: 0;
-            position: absolute;
-            border-width: 0 0 3px 3px;
-            &:nth-child(2) {
-                left: unset;
-                right: 10px;
-                transform: rotate(45deg);
-                border-width: 3px 3px 0 0;
-            }
-        }
-        .slider {
-            display: flex;
-            width: 80vw;
-            align-items: center;
-            overflow: hidden;
-            justify-content: flex-start;
-            position: relative;
-            scroll-behavior: smooth;
-            .element {
-                min-width: 80vw;
-                height: 400px;
-                @include centerFlex(row, center);
-            }
-        }
-
-        .card_box {
-            min-width: 100%;
-            height: 350px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.3s ease;
-            transform: scale(0.9);
-            cursor: pointer;
-            p,
-            h2 {
-                margin: 20px;
-                width: 90%;
-            }
-            p {
-                height: 150px;
-                overflow: auto;
-            }
-        }
-    }
     &__search {
         @include centerFlex(row, center);
         width: 100vw;
         height: 100px;
         align-items: flex-start;
         margin-bottom: 100px;
+
         h1 {
             width: 100%;
             text-align: center;
         }
+
         div {
             min-width: 150px;
             height: 40px;
@@ -84,6 +38,8 @@
             pointer-events: none;
             -webkit-tap-highlight-color: transparent;
             background-color: white;
+            z-index: 10;
+
             p {
                 padding-top: 10px;
                 color: black;
@@ -96,6 +52,7 @@
                     cursor: pointer;
                 }
             }
+
             span {
                 position: absolute;
                 content: "";
@@ -107,9 +64,9 @@
                 right: 5px;
                 top: 14px;
                 pointer-events: all;
-                transition: 0.3s ease;
             }
         }
+
         .--open {
             min-width: 150px;
             height: 160px;
@@ -119,9 +76,10 @@
             position: relative;
             @include centerFlex(column, flex-start);
             align-items: flex-start;
-            transition: 0.3s ease;
             background-color: white;
             pointer-events: all;
+            z-index: 10;
+
             span {
                 position: absolute;
                 content: "";
@@ -134,64 +92,193 @@
                 top: 5px;
                 pointer-events: all;
             }
+
             &:nth-child(1) {
                 height: 380px;
-                z-index: 10;
             }
         }
     }
+
     &__searchButton {
         @include button;
         min-width: 150px;
         margin: 20px auto 10px auto;
-        z-index: 20;
+        z-index: 18;
     }
+
     .backgroundImageWaves {
         position: absolute !important;
         top: 200px;
     }
+
+    &__element {
+        width: 90%;
+        height: 300px;
+        margin: 20px 0;
+        @include centerFlex(column center);
+        .card_box {
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            transition: 0.3s ease;
+            cursor: pointer;
+
+            p {
+                word-wrap: break-word;
+                max-height: 30%;
+                overflow: hidden;
+                font-size: 13px;
+            }
+            h2 {
+                font-size: 16px;
+            }
+        }
+    }
+
+    &__elementsList {
+        @include centerFlex(column, center);
+        flex-wrap: wrap;
+        width: 100vw;
+    }
+    &__pagination {
+        width: 100vw;
+        @include centerFlex(row, center);
+        margin-top: 50px;
+        z-index: 20;
+
+        h4 {
+            margin: 0px;
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            -webkit-tap-highlight-color: transparent;
+
+            &.--active {
+                background: $blue-color;
+                color: white;
+            }
+        }
+    }
+    &__paginationInfo {
+        color: gray;
+        font-weight: 500;
+        margin: 5px;
+    }
+
+    &__paginationButton {
+        width: 15px;
+        height: 15px;
+        border: none;
+        border-style: solid;
+        border-color: $blue-color;
+        border-width: 0 0 3px 3px;
+        transform: rotate(45deg);
+        background-color: transparent;
+        outline: none;
+        z-index: 10;
+        -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
+        margin: 20px;
+        border-radius: 3px;
+
+        &:last-child {
+            transform: rotate(45deg);
+            border-width: 3px 3px 0 0;
+        }
+
+        &:hover {
+            border-color: $orange-color;
+        }
+    }
 }
+
 @media (min-width: 1024px) {
     .posts {
-        &__list {
-            width: 100vw;
-            .control_button {
-                left: 150px;
-                border-width: 0 0 5px 5px;
-                &:nth-child(2) {
-                    left: unset;
-                    right: 150px;
-                    border-width: 5px 5px 0 0;
-                }
-            }
-            .slider {
-                width: 700px;
-                height: 400px;
-                .element {
-                    min-width: 700px;
-                    height: 400px;
-                }
-            }
-        }
-        .card_box {
-            transform: scale(0.7);
-            &:hover {
-                transform: scale(0.9);
-            }
-        }
+        padding-top: 250px;
+
         &__search {
             div {
                 margin: 50px 20px 0 20px;
             }
         }
+
         &__searchButton {
             margin: 50px auto 20px auto;
             width: 200px;
             height: 40px;
         }
+
         .backgroundImageWaves {
             position: absolute !important;
             top: 200px;
+        }
+
+        &__element {
+            width: 40%;
+            margin: 0;
+            height: 350px;
+            .card_box {
+                transform: scale(0.7);
+                width: 100%;
+                height: 100%;
+                transition: 0.3s ease;
+                cursor: pointer;
+                h2 {
+                    font-size: 20px;
+                }
+                p {
+                    word-wrap: break-word;
+                    font-size: 16px;
+                }
+
+                &:hover {
+                    transform: scale(0.75);
+                }
+            }
+        }
+
+        &__elementsList {
+            @include centerFlex(row, center);
+        }
+        &__pagination {
+            h4 {
+                margin: 20px;
+                height: 40px;
+                width: 40px;
+            }
+        }
+        &__paginationInfo {
+            margin: 20px;
+        }
+
+        &__paginationButton {
+            width: 15px;
+            height: 15px;
+            border: none;
+            border-style: solid;
+            border-color: $blue-color;
+            border-width: 0 0 3px 3px;
+            transform: rotate(45deg);
+            background-color: transparent;
+            outline: none;
+            z-index: 10;
+            -webkit-tap-highlight-color: transparent;
+            cursor: pointer;
+            margin: 20px;
+            border-radius: 3px;
+
+            &:last-child {
+                transform: rotate(45deg);
+                border-width: 3px 3px 0 0;
+            }
+
+            &:hover {
+                border-color: $orange-color;
+            }
         }
     }
 }

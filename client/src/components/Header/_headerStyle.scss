@@ -8,9 +8,11 @@ nav {
     position: fixed;
     z-index: 99;
     transition: 0.7s ease;
+
     h3 {
         margin-right: 20px;
     }
+
     p {
         font-size: 1rem;
         color: black;
@@ -20,6 +22,7 @@ nav {
         position: relative;
         cursor: pointer;
     }
+
     .nav__user {
         top: 45%;
         left: 50%;
@@ -35,15 +38,18 @@ nav {
         border-right: 8px solid transparent;
         border-bottom: 10px solid transparent;
         border-top: 8px solid black;
+
         &:hover {
             border-top-color: $blue-color;
         }
+
         &:hover .nav__user--open {
             pointer-events: all;
             visibility: visible;
             outline: none;
             -webkit-tap-highlight-color: transparent;
         }
+
         &--open {
             visibility: hidden;
             outline: none;
@@ -60,6 +66,8 @@ nav {
             @include centerFlex(column, space-around);
             cursor: default;
             border-radius: 5px;
+            z-index: 20;
+
             h5 {
                 font-size: 15px;
                 letter-spacing: 0px;
@@ -67,15 +75,18 @@ nav {
                 width: 95%;
                 padding: 10px;
                 border-radius: 5px;
+
                 &:hover {
                     background-color: rgba(245, 245, 245, 0.863);
                     cursor: pointer;
                 }
+
                 &:nth-child(1) {
                     font-size: 12px;
                     color: gray;
                     cursor: default;
                     position: relative;
+
                     &:hover {
                         background-color: white;
                         pointer-events: none;
@@ -84,9 +95,11 @@ nav {
             }
         }
     }
+
     .nav__pageList {
         width: 100%;
         @include centerFlex(row, flex-start);
+
         p {
             &:nth-child(1) {
                 cursor: default;
@@ -94,17 +107,20 @@ nav {
                 color: #3659a2;
             }
         }
+
         &__mobile {
             height: 85%;
             width: 100%;
             position: absolute;
             @include centerFlex(column, center);
             z-index: 10;
+
             img {
                 width: 300%;
                 position: absolute;
                 animation: showNaviListImage 1s 0.5s both;
             }
+
             h2 {
                 margin: 20px;
                 text-align: center;
@@ -113,28 +129,34 @@ nav {
             }
         }
     }
+
     &.--active {
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
         height: 50px;
         padding-top: 10px;
     }
+
     &.--open {
         height: 100%;
         width: 100vw;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
         @include centerFlex(row, center);
         align-items: flex-start;
-        z-index: 10;
+        z-index: 20;
     }
 }
+
 .nav__logInButtons {
     width: 100%;
     @include centerFlex(column, center);
+
     .nav__user {
         margin-top: 20px;
     }
+
     a {
         margin: 0;
+
         &:nth-child(1) {
             button {
                 background-color: white;
@@ -142,6 +164,7 @@ nav {
                 border: 1px solid $blue-color;
             }
         }
+
         button {
             @include button;
             width: 150px;
@@ -160,12 +183,14 @@ nav {
     z-index: 100;
     -webkit-tap-highlight-color: transparent;
 }
+
 .hamburgerMenu {
     width: 25px;
     height: 2px;
     background-color: black;
     position: relative;
     transition: cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s;
+
     &::before,
     &::after {
         position: absolute;
@@ -176,16 +201,20 @@ nav {
         transform: translateY(7px);
         transition: cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s;
     }
+
     &::after {
         transform: translateY(-7px);
     }
+
     &.open {
         transform: translate(-7px);
         background: transparent;
         transition: cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s;
+
         &::before {
             transform: rotate(-45deg) translate(7px, 7px);
         }
+
         &::after {
             transform: rotate(45deg) translate(7px, -7px);
         }
@@ -195,22 +224,28 @@ nav {
 @media (min-width: 1024px) {
     nav {
         padding: 45px 4vw 0 4vw;
+
         &.--active {
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
             height: 58px;
             padding-top: 10px;
         }
+
         p {
             font-size: 1.2rem;
             margin: 0 01px;
+
             &:hover {
                 color: $blue-color;
             }
         }
+
         .nav__pageList {
             width: 100%;
+
             p {
                 margin: 0 25px;
+
                 &:nth-child(1) {
                     font-size: 2rem;
                     margin-right: 100px;
@@ -218,15 +253,18 @@ nav {
             }
         }
     }
+
     .nav__logInButtons {
         width: 200px;
         @include centerFlex(row, flex-end);
         animation: none;
+
         h3 {
             margin-right: 30px;
             margin-top: 5px;
             font-size: 16px;
         }
+
         .nav__user {
             margin-top: 15px;
         }
@@ -244,14 +282,17 @@ nav {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
+
 @keyframes showNaviListImage {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 0.15;
     }

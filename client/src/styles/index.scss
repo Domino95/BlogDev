@@ -13,42 +13,48 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 html {
     font-family: "Exo", sans-serif;
     animation: enterPage 1s ease;
+    width: 100vw;
+    overflow-x: hidden;
 }
+
 p {
     color: rgb(69, 69, 69);
 }
+
 a {
-    font-size: 1.3rem;
+    font-size: 1rem;
     text-decoration: none;
     color: black;
     margin: 30px;
 }
+
 .active {
     color: $orange-color;
 }
+
 img.Wave1 {
     position: relative;
     width: 100vw;
     opacity: 0.1;
     z-index: -100;
-    bottom: -50px;
 }
+
 img.Wave2 {
     position: relative;
     width: 100vw;
     opacity: 0.1;
     z-index: -100;
-    bottom: 5px;
-    bottom: -45px;
 }
 
 @keyframes enterPage {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }

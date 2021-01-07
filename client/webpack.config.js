@@ -1,4 +1,5 @@
 const path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -7,6 +8,19 @@ module.exports = {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
+    plugins: [new HtmlWebpackPlugin( {
+        meta: {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'}
+,
+        templateContent: `
+    <html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+      <body>
+        <div id="root"></div>
+      </body>
+    </html>
+  `})],
     module: {
         rules: [
             {

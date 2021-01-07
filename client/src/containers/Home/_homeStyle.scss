@@ -1,4 +1,5 @@
 .home {
+
     &__firstSection,
     &__secondSection {
         z-index: 0;
@@ -7,23 +8,28 @@
         width: 100vw;
         @include centerFlex(column, center);
         flex-wrap: wrap;
+
         img {
             width: 100%;
         }
+
         &__box {
             width: 100%;
             margin-top: 50px;
             @include centerFlex(column, center);
+
             h1 {
                 text-align: center;
                 letter-spacing: 2px;
                 font-size: 1.8rem;
             }
+
             p {
                 margin: 50px auto 0 auto;
                 width: 80%;
                 text-align: center;
             }
+
             button {
                 @include button;
                 width: 200px;
@@ -31,11 +37,13 @@
             }
         }
     }
+
     &__secondSection {
         min-height: 600px;
         margin-bottom: 150px;
         @include centerFlex(row, space-around);
     }
+
     &__thirdSection {
         height: 250px;
         width: 100%;
@@ -43,6 +51,7 @@
         position: relative;
         overflow: hidden;
         @include centerFlex(row, center);
+
         .slider {
             width: 90%;
             display: flex;
@@ -52,9 +61,11 @@
             transition: 1s;
             scroll-behavior: smooth;
         }
+
         .column {
             min-width: 25%;
             transition: 1s;
+
             img {
                 margin: 0;
                 width: 100%;
@@ -62,11 +73,13 @@
             }
         }
     }
+
     &_title_ThirdSection {
         width: 100%;
         text-align: center;
     }
 }
+
 .control_button {
     position: absolute;
     width: 15px;
@@ -78,49 +91,67 @@
     transform: rotate(45deg);
     background-color: transparent;
     outline: none;
-    left: 10px;
+    left: 20px;
     z-index: 10;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
+
     &:nth-child(2) {
         left: unset;
-        right: 10px;
+        right: 20px;
         transform: rotate(45deg);
         border-width: 3px 3px 0 0;
     }
+
     &:hover {
         border-color: $orange-color;
     }
 }
+
 .backgroundImageWaves {
-    position: absolute !important;
+    position: absolute;
+    padding-top: 100px;
+
+    img {
+        max-width: none !important;
+    }
 }
+
 @media (min-width: 1024px) {
     .home {
+
         &__firstSection,
         &__secondSection {
             @include centerFlex(row, space-around);
             padding: 0px 4vw 0 4vw;
+
             img {
                 width: 60%;
+                max-width: 850px;
             }
+
             &__box {
                 width: 350px;
             }
         }
+
         &__secondSection {
             @include centerFlex(row, space-around);
         }
+
         &__thirdSection {
             transition: 1s;
             width: 80%;
+
             .slider {
                 width: 60%;
             }
+
             .column {
                 img {
                     transform: scale(0.3);
                     transition: 0.3s ease;
+
                     &:hover {
                         transform: scale(0.4);
                     }
@@ -128,10 +159,12 @@
             }
         }
     }
+
     .control_button {
         width: 25px;
         height: 25px;
         border-width: 0 0 5px 5px;
+
         &:nth-child(2) {
             border-width: 5px 5px 0 0;
         }
