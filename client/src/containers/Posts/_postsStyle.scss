@@ -8,15 +8,21 @@
         margin: 20px;
         font-size: 1.5rem;
     }
+    &__description {
+        @include centerFlex(row, center);
+        h2 {
+            width: 150px;
+            text-align: center;
+        }
+    }
 
     &__search {
         @include centerFlex(row, center);
         width: 100vw;
         height: 100px;
-        align-items: flex-start;
+        align-items: baseline;
 
         h1 {
-            width: 100%;
             text-align: center;
         }
 
@@ -37,7 +43,7 @@
             -webkit-tap-highlight-color: transparent;
             background-color: white;
             z-index: 19;
-
+            position: relative;
             p {
                 padding-top: 10px;
                 color: black;
@@ -207,10 +213,17 @@
 @media (min-width: 1024px) {
     .posts {
         padding-top: 200px;
+        &__description {
+            @include centerFlex(row, center);
+            h2 {
+                width: 190px;
+                text-align: center;
+            }
+        }
 
         &__search {
             div {
-                margin: 50px 20px 0 20px;
+                margin: 20px 20px 0 20px;
             }
         }
 

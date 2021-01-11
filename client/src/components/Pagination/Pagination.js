@@ -25,7 +25,7 @@ const Pagination = (props) => {
           <h4
             className={item === props.currentPage ? "--active" : null}
             key={index}
-            onClick={() => props.loadPosts(item)}
+            onClick={() => props.handleCurrentPage(item)}
           >
             {item}
           </h4>
@@ -34,7 +34,7 @@ const Pagination = (props) => {
         return (
           <Fragment key={index}>
             <h4 style={{ cursor: "default" }}>...</h4>
-            <h4 onClick={() => props.loadPosts(item)}>{item}</h4>
+            <h4 onClick={() => props.handleCurrentPage(item)}>{item}</h4>
           </Fragment>
         );
     });
@@ -52,7 +52,7 @@ const Pagination = (props) => {
           <h4
             className={item === props.currentPage ? "--active" : null}
             key={index}
-            onClick={() => props.loadPosts(item)}
+            onClick={() => props.handleCurrentPage(item)}
           >
             {item}
           </h4>
@@ -61,13 +61,13 @@ const Pagination = (props) => {
         return (
           <Fragment key={index}>
             <h4 style={{ cursor: "default" }}>...</h4>
-            <h4 onClick={() => props.loadPosts(item)}>{item}</h4>
+            <h4 onClick={() => props.handleCurrentPage(item)}>{item}</h4>
           </Fragment>
         );
       else if (item === 1)
         return (
           <Fragment key={index}>
-            <h4 onClick={() => props.loadPosts(item)}>{item}</h4>
+            <h4 onClick={() => props.handleCurrentPage(item)}>{item}</h4>
             <h4 style={{ cursor: "default" }}>...</h4>
           </Fragment>
         );
@@ -86,7 +86,7 @@ const Pagination = (props) => {
             <h4
               className={item === props.currentPage ? "--active" : null}
               key={index}
-              onClick={() => props.loadPosts(item)}
+              onClick={() => props.handleCurrentPage(item)}
             >
               {item}
             </h4>
@@ -94,7 +94,7 @@ const Pagination = (props) => {
         else if (item === 1)
           return (
             <Fragment key={index}>
-              <h4 onClick={() => props.loadPosts(item)}>{item}</h4>
+              <h4 onClick={() => props.handleCurrentPage(item)}>{item}</h4>
               <h4 style={{ cursor: "default" }}>...</h4>
             </Fragment>
           );
@@ -106,12 +106,12 @@ const Pagination = (props) => {
       <div className="posts__pagination">
         <button
           className="posts__paginationButton"
-          onClick={() => props.loadPosts(props.currentPage - 1)}
+          onClick={() => props.handleCurrentPage(props.currentPage - 1)}
         />
         {paginationToReturn && paginationToReturn}
         <button
           className="posts__paginationButton"
-          onClick={() => props.loadPosts(props.currentPage + 1)}
+          onClick={() => props.handleCurrentPage(props.currentPage + 1)}
         />
       </div>
 

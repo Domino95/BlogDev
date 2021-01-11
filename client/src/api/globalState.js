@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-
+import postsAPI from './PostsAPI'
 export const GlobalState = createContext()
 
 export const DataProvider = ({ children }) => {
@@ -7,12 +7,10 @@ export const DataProvider = ({ children }) => {
         if (document.cookie.length > 0) return true
         return false
     })
-    console.log(isLogged)
-
-
 
     const state = {
-        isLogged: [isLogged, setIsLogged]
+        isLogged: [isLogged, setIsLogged],
+        postsAPI: postsAPI()
     }
 
     return (

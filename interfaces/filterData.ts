@@ -1,6 +1,6 @@
 interface filterData {
-    Category: string 
-    Level: string 
-    page: string
+    Category: string
+    Level: string
+    currentPage: string
 }
 export default filterData
