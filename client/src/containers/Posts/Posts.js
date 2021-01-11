@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner/spinner";
 import PostsList from "../../components/PostsList/PostsList";
-import BackgroundImg from "../../components/BackgroundImg/BackgroundImg";
 import Pagination from "../../components/Pagination/Pagination";
 
 const Posts = () => {
@@ -28,6 +27,8 @@ const Posts = () => {
     };
     getPosts();
   }, []);
+
+
 
   const loadPosts = async (page) => {
     if (page > 0 && page !== numberOfPages + 1) {
@@ -93,13 +94,6 @@ const Posts = () => {
   return (
     <div className="posts">
       {isLoading && <Spinner />}
-      <BackgroundImg />
-      <h1 id="search">Search posts</h1>
-
-      <button className="posts__searchButton" onClick={() => filterPosts()}>
-        {" "}
-        Search
-      </button>
       <div className="posts__search">
         <div id="CategoryContainer" onClick={(e) => handleCategory(e)}>
           <span onClick={(e) => handleSearchActive(e)} id="Category" />
@@ -126,6 +120,10 @@ const Posts = () => {
           <p>All</p>
         </div>
       </div>
+
+      <button className="posts__searchButton" onClick={() => filterPosts()}>
+        Search
+      </button>
 
       <PostsList posts={posts} />
 

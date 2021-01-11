@@ -1,12 +1,18 @@
 import React from "react";
 import CardBox from "../../components/CardBox/CardBox";
 import WithStaticContent from "../../components/CardBox/hoc/withStatisContent";
+import BackgroundImg from "../../components/BackgroundImg/BackgroundImg";
+import Wave3 from '../../img/wave3.svg'
+import Wave2 from '../../img/wave2.svg'
+
 const CardBoxWithStaticContent = WithStaticContent(CardBox);
 
 const PostsList = ({ posts }) => {
   return (
     <>
       <div className="posts__elementsList">
+        {/* <BackgroundImg /> */}
+        <img className="posts__wave" src={Wave3} alt="footerSvg" />
         {posts &&
           posts.map((post, index) => {
             return (
@@ -19,10 +25,13 @@ const PostsList = ({ posts }) => {
                   date={post.date}
                   category={post.category}
                   level={post.level}
+                  commentsLength={post.comments.length}
                 />
               </div>
+
             );
           })}
+        <img className="posts__wave-last" src={Wave2} alt="footerSvg" />
       </div>
     </>
   );

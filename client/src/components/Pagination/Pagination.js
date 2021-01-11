@@ -15,7 +15,11 @@ const Pagination = (props) => {
         item === props.currentPage + 1 ||
         item === props.currentPage - 1 ||
         item === props.currentPage - 2 ||
-        item === props.currentPage - 3
+        item === props.currentPage - 3 ||
+        item === props.currentPage + 2 && item === props.numberOfPages ||
+        item === props.currentPage + 2 && item === props.numberOfPages - 1 ||
+        item === props.currentPage + 3 && item === props.numberOfPages
+
       )
         return (
           <h4

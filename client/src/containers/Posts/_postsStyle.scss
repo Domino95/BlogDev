@@ -1,7 +1,6 @@
 .posts {
     padding-top: 150px;
     width: 100vw;
-    overflow: hidden;
     @include centerFlex(column, space-around);
     position: relative;
 
@@ -15,7 +14,6 @@
         width: 100vw;
         height: 100px;
         align-items: flex-start;
-        margin-bottom: 100px;
 
         h1 {
             width: 100%;
@@ -38,7 +36,7 @@
             pointer-events: none;
             -webkit-tap-highlight-color: transparent;
             background-color: white;
-            z-index: 10;
+            z-index: 19;
 
             p {
                 padding-top: 10px;
@@ -78,7 +76,7 @@
             align-items: flex-start;
             background-color: white;
             pointer-events: all;
-            z-index: 10;
+            z-index: 19;
 
             span {
                 position: absolute;
@@ -102,13 +100,8 @@
     &__searchButton {
         @include button;
         min-width: 150px;
-        margin: 20px auto 10px auto;
+        margin: 20px auto 100px auto;
         z-index: 18;
-    }
-
-    .backgroundImageWaves {
-        position: absolute !important;
-        top: 200px;
     }
 
     &__element {
@@ -139,7 +132,22 @@
         @include centerFlex(column, center);
         flex-wrap: wrap;
         width: 100vw;
+        position: relative;
+        background-color: #ecf0f9;
+        .posts__wave {
+            position: absolute;
+            bottom: 100%;
+            width: 100vw;
+            z-index: -10;
+        }
+        .posts__wave-last {
+            position: absolute;
+            top: 100%;
+            width: 100vw;
+            z-index: -10;
+        }
     }
+
     &__pagination {
         width: 100vw;
         @include centerFlex(row, center);
@@ -198,7 +206,7 @@
 
 @media (min-width: 1024px) {
     .posts {
-        padding-top: 250px;
+        padding-top: 200px;
 
         &__search {
             div {
@@ -207,18 +215,12 @@
         }
 
         &__searchButton {
-            margin: 50px auto 20px auto;
+            margin: 50px auto 100px auto;
             width: 200px;
             height: 40px;
         }
-
-        .backgroundImageWaves {
-            position: absolute !important;
-            top: 200px;
-        }
-
         &__element {
-            width: 40%;
+            width: 50%;
             margin: 0;
             height: 350px;
             .card_box {
@@ -243,6 +245,12 @@
 
         &__elementsList {
             @include centerFlex(row, center);
+            .posts__wave {
+                top: -200px;
+            }
+            .posts__wave-last {
+                bottom: -200px;
+            }
         }
         &__pagination {
             h4 {

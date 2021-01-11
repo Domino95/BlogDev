@@ -17,6 +17,7 @@ export default function (WithStaticContent) {
                     CARDBOX_DATE={this.props.date}
                     CARDBOX_CATEGORY={this.props.category}
                     CARDBOX_LEVEL={this.props.level}
+                    CARDBOX_COMMENTS={this.props.commentsLength}
                 />
             );
         }

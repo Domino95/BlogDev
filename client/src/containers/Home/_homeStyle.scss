@@ -1,5 +1,4 @@
 .home {
-
     &__firstSection,
     &__secondSection {
         z-index: 0;
@@ -119,7 +118,6 @@
 
 @media (min-width: 1024px) {
     .home {
-
         &__firstSection,
         &__secondSection {
             @include centerFlex(row, space-around);

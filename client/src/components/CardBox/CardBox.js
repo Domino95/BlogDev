@@ -1,10 +1,11 @@
 import React from 'react';
-
+import commentSvg from '../../img/comment.svg'
 const CardBox = ({
     CARDBOX_USER,
     CARDBOX_DATE,
     CARDBOX_CATEGORY,
     CARDBOX_LEVEL,
+    CARDBOX_COMMENTS,
     children
 }) => {
     return (
@@ -15,7 +16,7 @@ const CardBox = ({
                 </div>
                 {children}
                 <div className="card__specification">
-                    <span> {CARDBOX_CATEGORY}</span><span> {CARDBOX_LEVEL}</span>
+                    <span> {CARDBOX_CATEGORY}</span><span> {CARDBOX_LEVEL}</span> <img src={commentSvg} alt="comment" />  {CARDBOX_COMMENTS}
                 </div>
             </div>
         </>

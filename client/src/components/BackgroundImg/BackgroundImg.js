@@ -6,6 +6,7 @@ const BackgroundImg = () => {
     return (
         <div className="backgroundImageWaves">
             <img className="Wave1" src={Wave3} alt="footerSvg" />
+            <div />
             <img className="Wave2" src={Wave2} alt="footerSvg" />
         </div>
     );
