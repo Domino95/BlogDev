@@ -40,7 +40,7 @@ const Header = () => {
                         <div className="nav__pageList">
                             <p>{Logo}</p>
                             <h2>   <NavLink exact to="/"> Home</NavLink></h2>
-                            <h2> <NavLink exact to="/create">Create Post</NavLink></h2>
+                            {isLogged && <h2> <NavLink exact to="/create">Create Post</NavLink></h2>}
                             <h2> <NavLink exact to="/posts">Posts</NavLink></h2>
                         </div>
 

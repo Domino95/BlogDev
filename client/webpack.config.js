@@ -6,11 +6,12 @@ module.exports = {
     entry: ["@babel/polyfill", "./src/index.js"],
     output: {
         path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
-    plugins: [new HtmlWebpackPlugin( {
-        meta: {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'}
-,
+    plugins: [new HtmlWebpackPlugin({
+        meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
+        ,
         templateContent: `
     <html>
     <head>

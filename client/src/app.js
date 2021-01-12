@@ -1,5 +1,5 @@
 import "regenerator-runtime/runtime.js";
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from "./components/Header/header"
 import Footer from "./components/Footer/footer"
 import Home from './containers/Home/Home'
@@ -8,59 +8,80 @@ import Login from './containers/Authentication/Login/Login'
 import Register from './containers/Authentication/Register/Register'
 import Posts from './containers/Posts/Posts'
 import PostDetail from './containers/PostDetail/postDetail'
-import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop/scrollToTop'
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom'
+import { GlobalState } from './api/globalState'
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
+function App() {
+    const state = useContext(GlobalState)
+    const [isLogged] = state.isLogged
 
-    render() {
-        return (
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path='/'>
-                        <Header />
-                        <Home />
-                        <Footer />
-                    </Route>
+    return (
+        <BrowserRouter>
+            <Switch>
 
-                    <Route exact path='/create'>
-                        <Header />
-                        <CreatePost />
-                        <Footer />
-                    </Route>
+                <Route exact path='/'>
+                    <ScrollToTop />
+                    <Header />
+                    <Home />
+                    <Footer />
+                </Route>
 
-                    <Route exact path='/login'>
-                        <Header />
-                        <Login />
-                    </Route>
+                <Route exact path='/create'>
+                    {isLogged ?
+                        <>
+                            <ScrollToTop />
+                            <Header />
+                            <CreatePost />
+                            <Footer />
+                        </>
+                        :
+                        <Redirect exact to='/' />
+                    }
+                </Route>
 
-                    <Route exact path='/register'>
-                        <Header />
-                        <Register />
-                    </Route>
+                <Route exact path='/login'>
+                    {!isLogged ?
+                        <>
+                            <ScrollToTop />
+                            <Header />
+                            <Login />
+                        </> :
+                        <Redirect exact to='/' />
+                    }
+                </Route>
 
-                    <Route exact path='/posts'>
-                        <Header />
-                        <Posts />
-                        <Footer />
-                    </Route>
+                <Route exact path='/register'>
+                    {!isLogged ?
+                        <>
+                            <ScrollToTop />
+                            <Header />
+                            <Register />
+                        </> :
+                        <Redirect exact to='/' />
+                    }
+                </Route>
 
-                    <Route exact path='/posts/:id'>
-                        <Header />
-                        <PostDetail />
-                        <Footer />
-                    </Route>
+                <Route exact path='/posts'>
+                    <ScrollToTop />
+                    <Header />
+                    <Posts />
+                    <Footer />
+                </Route>
+
+                <Route path='/posts/:id'>
+                    <ScrollToTop />
+                    <Header />
+                    <PostDetail />
+                    <Footer />
+                </Route>
 
 
-                </Switch>
-            </BrowserRouter>
-        );
-    }
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
 export default App;

@@ -1,0 +1,11 @@
+.postDetail {
+    padding-top: 150px;
+    background: linear-gradient(white, #f7f8f8);
+    min-height: calc(var(--vh, 1vh) * 100);
+    @include centerFlex(column, center);
+}
+
+@media (min-width: 1024px) {
+    .postDetail {
+    }
+}

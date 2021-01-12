@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import CardBox from "../../components/CardBox/CardBox";
 import WithStaticContent from "../../components/CardBox/hoc/withStatisContent";
 import Wave3 from '../../img/wave3.svg'
 import Wave2 from '../../img/wave2.svg'
-
 const CardBoxWithStaticContent = WithStaticContent(CardBox);
 
 const PostsList = ({ posts }) => {
@@ -15,16 +15,22 @@ const PostsList = ({ posts }) => {
           posts.map((post, index) => {
             return (
               <div key={index} className="posts__element">
-                <CardBoxWithStaticContent
-                  key={index}
-                  title={post.title}
-                  content={post.content}
-                  userName={post.creator.userName}
-                  date={post.date}
-                  category={post.category}
-                  level={post.level}
-                  commentsLength={post.comments.length}
-                />
+                <Link
+                  to={{
+                    pathname: `/posts/${post._id}`,
+                    state: post
+                  }}>
+                  <CardBoxWithStaticContent
+                    key={index}
+                    title={post.title}
+                    content={post.content}
+                    userName={post.creator.userName}
+                    date={post.date}
+                    category={post.category}
+                    level={post.level}
+                    commentsLength={post.comments.length}
+                  />
+                </Link>
               </div>
 
             );

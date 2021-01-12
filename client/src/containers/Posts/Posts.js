@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import axios from "axios";
 import Spinner from "../../components/Spinner/spinner";
 import PostsList from "../../components/PostsList/PostsList";
 import Pagination from "../../components/Pagination/Pagination";
@@ -7,11 +6,11 @@ import { GlobalState } from '../../api/globalState'
 
 const Posts = () => {
   const state = useContext(GlobalState)
-  const [posts, setPosts] = state.postsAPI.posts
-  const [isLoading, setIsLoading] = state.postsAPI.isLoading
+  const [posts] = state.postsAPI.posts
+  const [isLoading] = state.postsAPI.isLoading
   const [Category, setCategory] = state.postsAPI.Category
   const [Level, setLevel] = state.postsAPI.Level
-  const [numberOfPages, setNumberOfPages] = state.postsAPI.numberOfPages
+  const [numberOfPages] = state.postsAPI.numberOfPages
   const [currentPage, setCurrentPage] = state.postsAPI.currentPage
   const { filterPosts } = state.postsAPI
 
