@@ -17,7 +17,7 @@ const PostsList = ({ posts }) => {
               <div key={index} className="posts__element">
                 <Link
                   to={{
-                    pathname: `/posts/${post._id}`,
+                    pathname: `/post/?_id=${post._id}`,
                     state: post
                   }}>
                   <CardBoxWithStaticContent
@@ -32,7 +32,6 @@ const PostsList = ({ posts }) => {
                   />
                 </Link>
               </div>
-
             );
           })}
         <img className="posts__wave-last" src={Wave2} alt="footerSvg" />

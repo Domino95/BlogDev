@@ -12,6 +12,7 @@ const Posts = () => {
   const [Level, setLevel] = state.postsAPI.Level
   const [numberOfPages] = state.postsAPI.numberOfPages
   const [currentPage, setCurrentPage] = state.postsAPI.currentPage
+  const [Error] = state.postsAPI.Error
   const { filterPosts } = state.postsAPI
 
   const handleCurrentPage = (page) => {
@@ -77,10 +78,11 @@ const Posts = () => {
         </div>
       </div>
 
+      <h3>{Error}</h3>
+
       <button className="posts__searchButton" onClick={() => filterPosts()}>
         Search
       </button>
-
       <PostsList posts={posts} />
 
       <Pagination

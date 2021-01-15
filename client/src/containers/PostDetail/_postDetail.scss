@@ -3,9 +3,40 @@
     background: linear-gradient(white, #f7f8f8);
     min-height: calc(var(--vh, 1vh) * 100);
     @include centerFlex(column, center);
+
+    .card_box {
+        width: 95%;
+    }
+}
+.commentSection {
+    width: 70vw;
+    margin-top: 50px;
+
+    &__createPost {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid black;
+        resize: none;
+        background-color: transparent;
+        outline: none;
+        margin-top: 30px;
+        font-size: 15px;
+        font-family: "Exo", sans-serif;
+        overflow: hidden;
+        padding: 0 10px 0 10px;
+        height: 24px;
+    }
+    &__button {
+        @include button;
+        margin: 20px;
+        margin-left: calc(100% - 90px);
+    }
 }
 
 @media (min-width: 1024px) {
     .postDetail {
+        .card_box {
+            width: unset;
+        }
     }
 }

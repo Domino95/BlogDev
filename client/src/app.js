@@ -64,14 +64,14 @@ function App() {
                     }
                 </Route>
 
-                <Route exact path='/posts'>
+                <Route path='/posts'>
                     <ScrollToTop />
                     <Header />
                     <Posts />
                     <Footer />
                 </Route>
 
-                <Route path='/posts/:id'>
+                <Route path='/post'>
                     <ScrollToTop />
                     <Header />
                     <PostDetail />

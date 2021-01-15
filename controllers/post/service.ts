@@ -2,14 +2,14 @@ import postModel from '../../models/post'
 
 class PostService {
 
-    public countPosts = async (Level?: string, Category?: string) => {
+    public countPosts = async (level?: string, category?: string) => {
 
         let numberOfPosts: number
-        if (!Level && !Category) numberOfPosts = await postModel.countDocuments()
-        else if (Level === "All" && Category === "All") numberOfPosts = await postModel.countDocuments()
-        else if (Level === "All") numberOfPosts = await postModel.find({ category: Category }).countDocuments()
-        else if (Category === "All") numberOfPosts = await postModel.find({ level: Level }).countDocuments()
-        else numberOfPosts = await postModel.find({ level: Level, category: Category }).countDocuments()
+        if (!level && !category) numberOfPosts = await postModel.countDocuments()
+        else if (level === "All" && category === "All") numberOfPosts = await postModel.countDocuments()
+        else if (level === "All") numberOfPosts = await postModel.find({ category: category }).countDocuments()
+        else if (category === "All") numberOfPosts = await postModel.find({ level }).countDocuments()
+        else numberOfPosts = await postModel.find({ level: level, category: category }).countDocuments()
 
         console.log(numberOfPosts)
         let numberOfPages = numberOfPosts / 6
@@ -19,31 +19,31 @@ class PostService {
         return numberOfPages;
     }
 
-    public receivePosts = async (currentPage: string, Level?: string, Category?: string) => {
+    public receivePosts = async (page: string, level?: string, category?: string) => {
 
         let posts
-        if (!Level && !Category) posts = await postModel.find()
-            .skip((parseInt(currentPage, 10) - 1) * 6)
+        if (!level && !category) posts = await postModel.find()
+            .skip((parseInt(page, 10) - 1) * 6)
             .limit(6)
             .populate('creator', 'userName')
 
-        else if (Level === "All" && Category === "All") posts = await postModel.find()
-            .skip((parseInt(currentPage, 10) - 1) * 6)
+        else if (level === "All" && category === "All") posts = await postModel.find()
+            .skip((parseInt(page, 10) - 1) * 6)
             .limit(6).
             populate('creator', 'userName')
 
-        else if (Level === "All") posts = await postModel.find({ category: Category })
-            .skip((parseInt(currentPage, 10) - 1) * 6)
+        else if (level === "All") posts = await postModel.find({ category: category })
+            .skip((parseInt(page, 10) - 1) * 6)
             .limit(6)
             .populate('creator', 'userName')
 
-        else if (Category === "All") posts = await postModel.find({ level: Level })
-            .skip((parseInt(currentPage, 10) - 1) * 6)
+        else if (category === "All") posts = await postModel.find({ level: level })
+            .skip((parseInt(page, 10) - 1) * 6)
             .limit(6)
             .populate('creator', 'userName')
 
-        else posts = await postModel.find({ level: Level, category: Category })
-            .skip((parseInt(currentPage, 10) - 1) * 6)
+        else posts = await postModel.find({ level: level, category: category })
+            .skip((parseInt(page, 10) - 1) * 6)
             .limit(6)
             .populate('creator', 'userName')
 

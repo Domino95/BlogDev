@@ -1,17 +1,6 @@
 import mongoose from 'mongoose';
 import postInterface from '../interfaces/post'
-
-const commentSchema = new mongoose.Schema({
-    creator: {
-        ref: "User",
-        type: mongoose.Schema.Types.ObjectId,
-    },
-    content: String,
-},
-    {
-        timestamps: true
-    }
-);
+import commentSchema from './comment'
 
 const postSchema = new mongoose.Schema({
     creator: {

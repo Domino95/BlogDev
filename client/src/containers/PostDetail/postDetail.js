@@ -1,24 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
+import CommentSection from '../../components/CommentsSection/commentSection'
 import CardBox from "../../components/CardBox/CardBox";
 import WithStaticContent from '../../components/CardBox/hoc/withStatisContent'
+import Spinner from "../../components/Spinner/spinner";
+import axios from 'axios'
 const CardBoxWithStaticContent = WithStaticContent(CardBox);
 
 const PostDetail = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [post, setPost] = useState({});
     const location = useLocation();
-    const post = <CardBoxWithStaticContent
-        title={location.state.title}
-        content={location.state.content}
-        userName={location.state.creator.userName}
-        date={location.state.date}
-        category={location.state.category}
-        level={location.state.level}
-        commentsLength={location.state.comments.length}
-    />
+
+    useEffect(() => {
+        const getPosts = async () => {
+            if (location.state) {
+                setPost(location.state)
+            }
+            else {
+                try {
+                    setIsLoading(true);
+                    const response = await axios.get(`/post/getPost${location.search}`)
+                    setPost(response.data);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            setIsLoading(false);
+        };
+        getPosts()
+    }, [])
 
     return (
         <div className="postDetail">
-            {post}
+
+            { isLoading && <Spinner />}
+            <CardBoxWithStaticContent
+                title={post.title}
+                content={post.content}
+                userName={post.creator && post.creator.userName}
+                date={post.date}
+                category={post.category}
+                level={post.level}
+                commentsLength={post.comments && post.comments.length}
+            />
+            <CommentSection />
         </div>
     );
 }
