@@ -30,7 +30,7 @@ const HamburgerMenu = ({ isLogged, handleSetNaviActive }) => {
                     <img src={Img} alt="man" />
                     <h2>   <NavLink onClick={handleHamburgerMenuActive} exact to="/"> Home</NavLink></h2>
                     {isLogged && <h2> <NavLink onClick={handleHamburgerMenuActive} to="/create">Create Post</NavLink></h2>}
-                    <h2> <NavLink onClick={handleHamburgerMenuActive} to="/posts">Posts</NavLink></h2>
+                    <h2> <NavLink onClick={handleHamburgerMenuActive} to='/posts/?level=All&category=All&page=1'>Posts</NavLink></h2>
 
                     <div className="nav__logInButtons">
                         {!isLogged &&

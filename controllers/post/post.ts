@@ -5,7 +5,6 @@ import postModel from '../../models/post'
 import reqWithUserData from '../../interfaces/reqWithUserData'
 import PostService from './service'
 import filterData from '../../interfaces/filterData'
-import postInterface from '../../interfaces/post'
 
 class Post implements Controller {
     public path = '/post'
@@ -16,15 +15,12 @@ class Post implements Controller {
         this.initializeRoutes()
     }
 
-
     private initializeRoutes = () => {
         this.router.post(`${this.path}/createPost`, authorization, this.createPost)
         this.router.delete(`${this.path}/deletePost`, authorization, this.deletePost)
         this.router.get(`${this.path}/getPosts`, this.getPosts)
-        this.router.get(`${this.path}/filterPosts`, this.filterPosts)
         this.router.get(`${this.path}/getPost`, this.getOnePost)
     }
-
 
     private createPost = async (req: reqWithUserData, res: Response) => {
         try {
@@ -53,19 +49,6 @@ class Post implements Controller {
         return res.send(404)
     }
 
-    private filterPosts = async (req: Request<{}, {}, {}, filterData>, res: Response) => {
-
-        let { level, category }: filterData = req.query
-        const page = "1"
-
-        const numberOfPages = await this.postService.countPosts(level, category)
-        const posts = await this.postService.receivePosts(page, level, category)
-
-        if (posts) return res.send({ posts, numberOfPages })
-        return res.status(404).send("Posts not found")
-    }
-
-
     private getPosts = async (req: Request<{}, {}, {}, filterData>, res: Response) => {
 
         let { level, category, page }: filterData = req.query
@@ -79,7 +62,10 @@ class Post implements Controller {
 
     private getOnePost = async (req: Request<{}, {}, {}>, res: Response) => {
         let _id = req.query._id
-        const post = await postModel.findById(_id).populate('creator', 'userName')
+        const post = await postModel.findById(_id)
+            .populate('creator', 'userName')
+            .populate({ path: 'comments.commentCreator', select: 'userName' })
+
         if (post) return res.send(post)
         return res.status(404).send("Posts not found")
     }

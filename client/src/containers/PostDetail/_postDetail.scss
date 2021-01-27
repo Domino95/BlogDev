@@ -1,6 +1,5 @@
 .postDetail {
-    padding-top: 150px;
-    background: linear-gradient(white, #f7f8f8);
+    padding-top: 250px;
     min-height: calc(var(--vh, 1vh) * 100);
     @include centerFlex(column, center);
 
@@ -9,7 +8,7 @@
     }
 }
 .commentSection {
-    width: 70vw;
+    width: 90vw;
     margin-top: 50px;
 
     &__createPost {
@@ -19,17 +18,29 @@
         resize: none;
         background-color: transparent;
         outline: none;
-        margin-top: 30px;
+        margin-top: 70px;
         font-size: 15px;
         font-family: "Exo", sans-serif;
         overflow: hidden;
         padding: 0 10px 0 10px;
-        height: 24px;
+        height: 30px;
+        padding-bottom: 10px;
+        transition: 0.2s ease;
     }
     &__button {
         @include button;
         margin: 20px;
         margin-left: calc(100% - 90px);
+    }
+    &__commentContainer {
+        background-color: #ecf0f9;
+        margin-top: 40px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    &__userNameAndDateContainer {
+        @include centerFlex(row, space-between);
+        margin-bottom: 30px;
     }
 }
 
@@ -37,6 +48,12 @@
     .postDetail {
         .card_box {
             width: unset;
+            min-width: 850px;
+            width: 850px;
+        }
+        .commentSection {
+            width: 850px;
+            margin-top: 200px;
         }
     }
 }

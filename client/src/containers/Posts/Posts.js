@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useHistory } from 'react-router-dom'
 import Spinner from "../../components/Spinner/spinner";
 import PostsList from "../../components/PostsList/PostsList";
 import Pagination from "../../components/Pagination/Pagination";
 import { GlobalState } from '../../api/globalState'
 
+
 const Posts = () => {
   const state = useContext(GlobalState)
+  const history = useHistory();
+
   const [posts] = state.postsAPI.posts
   const [isLoading] = state.postsAPI.isLoading
   const [Category, setCategory] = state.postsAPI.Category
@@ -13,13 +17,21 @@ const Posts = () => {
   const [numberOfPages] = state.postsAPI.numberOfPages
   const [currentPage, setCurrentPage] = state.postsAPI.currentPage
   const [Error] = state.postsAPI.Error
-  const { filterPosts } = state.postsAPI
+  document.title = "BlogDev - Posts"
 
-  const handleCurrentPage = (page) => {
-    if (page > 0 && page !== numberOfPages + 1) {
-      setCurrentPage(page)
+  useEffect(() => setParametrs(history.location), [])
+  history.listen((location) => {
+    setParametrs(location);
+  });
+
+  const setParametrs = (location) => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('category') && params.get('level') && parseInt(params.get('page'), 10)) {
+      setCategory(params.get('category'))
+      setLevel(params.get('level'))
+      setCurrentPage(parseInt(params.get('page'), 10))
     }
-  };
+  }
 
   function handleSearchActive(e) {
     const { id } = e.target;
@@ -28,16 +40,31 @@ const Posts = () => {
     else div.classList.add("--open");
   }
 
+  const handleCurrentPage = (page) => {
+    if (page > 0 && page !== numberOfPages + 1) {
+      history.push({
+        pathname: '/posts/',
+        search: `level=${Level}&category=${Category}&page=${page}`
+      });
+    }
+  };
+
   function handleCategory(e) {
     if (e.target.id === "") {
-      setCategory(e.target.innerText);
+      history.push({
+        pathname: '/posts/',
+        search: `level=${Level}&category=${e.target.innerText}&page=${1}`
+      });
       document.querySelector(`#CategoryContainer`).classList.remove("--open");
     }
   }
 
   function handleLevel(e) {
     if (e.target.id === "") {
-      setLevel(e.target.innerText);
+      history.push({
+        pathname: '/posts/',
+        search: `level=${e.target.innerText}&category=${Category}&page=${1}`
+      });
       document.querySelector(`#LevelContainer`).classList.remove("--open");
     }
   }
@@ -78,14 +105,10 @@ const Posts = () => {
         </div>
       </div>
 
-      <h3>{Error}</h3>
-
-      <button className="posts__searchButton" onClick={() => filterPosts()}>
-        Search
-      </button>
-      <PostsList posts={posts} />
+      <PostsList posts={posts} error={Error} />
 
       <Pagination
+        error={Error}
         currentPage={currentPage}
         numberOfPages={numberOfPages}
         handleCurrentPage={(page) => handleCurrentPage(page)}

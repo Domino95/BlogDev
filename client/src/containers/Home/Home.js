@@ -9,6 +9,7 @@ import WithStaticContent from "../../components/CardBox/hoc/withStatisContent";
 
 const CardBoxWithStaticContent = WithStaticContent(CardBox);
 const Home = () => {
+  document.title = "BlogDev - Home"
   function generateSlider(e) {
     let column = document.querySelectorAll(".column");
     let slider = document.querySelector(".slider");

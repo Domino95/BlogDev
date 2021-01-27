@@ -2,7 +2,7 @@
     &__firstSection,
     &__secondSection {
         z-index: 0;
-        min-height: calc(var(--vh, 1vh) * 100);
+        height: calc(var(--vh, 1vh) * 100);
         padding: 110px 4vw 0 4vw;
         width: 100vw;
         @include centerFlex(column, center);
@@ -109,7 +109,6 @@
 
 .backgroundImageWaves {
     position: absolute;
-    padding-top: 100px;
 
     img {
         max-width: none !important;

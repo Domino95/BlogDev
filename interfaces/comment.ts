@@ -1,9 +1,8 @@
 import { Types } from 'mongoose'
-import userInterface from './user'
 
 interface Comment {
-    _id: string
+    _id: Types.ObjectId
     content: String
-    creator: Types.ObjectId | userInterface
+    commentCreator: string | Types.ObjectId
 }
 export default Comment

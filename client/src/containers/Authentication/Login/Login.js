@@ -18,6 +18,8 @@ const Login = () => {
     const [user, setUser] = useState({
         email: '', password: ''
     })
+    document.title = "BlogDev - Login"
+
 
     const onChangeInput = (e, ref) => {
         const { id, value } = e.target;

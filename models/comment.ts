@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
-    creator: {
+    commentCreator: {
         ref: "User",
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId
     },
     content: String,
 },
@@ -11,4 +11,5 @@ const commentSchema = new mongoose.Schema({
         timestamps: true
     }
 );
+
 export default commentSchema

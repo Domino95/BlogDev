@@ -20,6 +20,8 @@ const Register = () => {
     const [user, setUser] = useState({
         email: '', userName: "", password: '', repeatPassword: ""
     })
+    document.title = "BlogDev - Register"
+
 
     document.addEventListener('input', (e) => {
         const password = document.querySelector('#password')

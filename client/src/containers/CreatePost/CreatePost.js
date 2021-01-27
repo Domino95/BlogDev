@@ -13,6 +13,7 @@ const CreatePost = () => {
     const [post, setPost] = useState({
         title: "", content: "", level: null, category: null
     })
+    document.title = "BlogDev - Create Post"
 
     const handlePost = (name, e) => {
         const { id, value } = e.target;
